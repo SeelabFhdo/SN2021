@@ -1,0 +1,81 @@
+version v100 {
+    context CustomerManagementAPI {
+        structure AddressDto {
+            string city,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure CustomerDto {
+            Links _links,
+            date birthday,
+            string city,
+            string customerid,
+            string email,
+            string firstname,
+            string lastname,
+            MoveHistoryList movehistory,
+            string phonenumber,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure Links {
+            boolean empty
+        }
+
+        list MoveHistoryList { AddressDto movehistory }
+
+        structure CustomerProfileDto {
+            date birthday,
+            string city,
+            string email,
+            string firstname,
+            string lastname,
+            MoveHistoryList movehistory,
+            string phonenumber,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure InteractionAcknowledgementDto {
+            string lastacknowledgedinteractionid
+        }
+
+        structure InteractionEntity {
+            string content,
+            date ^date,
+            string id,
+            boolean sentbyoperator
+        }
+
+        structure InteractionLogAggregateRoot {
+            string customerid,
+            InteractionsList interactions,
+            string lastacknowledgedinteractionid,
+            int numberofunacknowledgedinteractions,
+            string username
+        }
+
+        list InteractionsList { InteractionEntity interactions }
+
+        structure NotificationDto {
+            int count,
+            string customerid,
+            string username
+        }
+
+        structure PaginatedCustomerResponseDto {
+            Links _links,
+            CustomersList customers,
+            string filter,
+            int limit,
+            int offset,
+            int size
+        }
+
+        list CustomersList { CustomerDto customers }
+
+        list NotificationDtoList { NotificationDto notificationdto }
+    }
+}

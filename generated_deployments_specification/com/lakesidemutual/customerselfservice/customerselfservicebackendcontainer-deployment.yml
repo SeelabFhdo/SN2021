@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: customerselfservicebackendcontainer
+  name: customerselfservicebackendcontainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customerselfservicebackendcontainer
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: customerselfservicebackendcontainer
+    spec:
+      containers:
+      - image: customerselfservicebackendcontainer
+        imagePullPolicy: "Never"
+        name: customerselfservicebackendcontainer
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: customerselfservicebackendcontainer
+  name: customerselfservicebackendcontainer
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: customerselfservicebackendcontainer
+  type: ClusterIP
+status:
+  loadBalancer: {}

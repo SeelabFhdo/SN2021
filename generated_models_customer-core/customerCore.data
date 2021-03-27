@@ -1,0 +1,65 @@
+version v100 {
+    context CustomerCoreAPI {
+        structure Address {
+            string city,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure AddressDto {
+            string city,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure CitiesResponseDto {CitiesList cities}
+
+        list CitiesList {string cities}
+
+        structure CustomerProfileUpdateRequestDto {
+            date birthday,
+            string city,
+            string email,
+            string firstname,
+            string lastname,
+            string phonenumber,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure CustomerResponseDto {
+            Links _links,
+            date birthday,
+            string city,
+            string customerid,
+            string email,
+            string firstname,
+            string lastname,
+            MoveHistoryList movehistory,
+            string phonenumber,
+            string postalcode,
+            string streetaddress
+        }
+
+        structure Links {boolean empty}
+
+        list MoveHistoryList { Address movehistory }
+
+        structure CustomersResponseDto {
+            Links _links,
+            CustomersList customers
+        }
+
+        list CustomersList { CustomerResponseDto customers }
+
+        structure PaginatedCustomerResponseDto {
+            Links _links,
+            CustomersList customers,
+            string filter,
+            int limit,
+            int offset,
+            int size
+        }
+
+    }
+}
