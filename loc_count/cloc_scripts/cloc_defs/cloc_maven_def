@@ -1,0 +1,5 @@
+Maven
+    filter remove_html_comments
+    filter call_regexp_common HTML
+    extension xml
+    3rd_gen_scale 5.00
