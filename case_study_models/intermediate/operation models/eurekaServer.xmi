@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/eureka-server/eurekaServer.operation">
+  <imports name="containerTechnology" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/docker.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="Eureka" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eureka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="customerCore" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerCore.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="customerManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="customerSelfServicebackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerSelfServiceBackend.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="policyManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/policyManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
+  <infrastructureNodes name="ServiceDiscovery" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="Eureka.Eureka">
+    <defaultValues value="DiscoveryService" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="SpringComponent" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <defaultValues value="8761" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <defaultValues value="EurekaServer" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.4"/>
+    <defaultValues value="com.lakesidemutual.eurekaserver" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.3"/>
+    <defaultValues value="0.0.1-SNAPSHOT" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.5"/>
+    <defaultValues value="EurekaServer" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.6"/>
+    <defaultValues value="Java" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.7"/>
+    <aspects name="Dockerfile" import="//@imports.0">
+      <properties name="content" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            # syntax=docker/dockerfile:experimental&#xA;            FROM maven:3.5.2-jdk-8 AS build&#xA;            ARG BASE=/usr/src/app&#xA;            COPY pom.xml ${BASE}/&#xA;            COPY src ${BASE}/src&#xA;            RUN --mount=type=cache,target=/root/.m2 mvn -Dmaven.gitcommitid.skip=true -f ${BASE}/pom.xml install&#xA;&#xA;            FROM openjdk:8-jdk-alpine&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/lib/* /app/lib/&#xA;            COPY --from=build /usr/src/app/target/dependency/META-INF /app/META-INF&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/classes /app&#xA;&#xA;            EXPOSE 8761&#xA;            ENTRYPOINT [&quot;java&quot;,&quot;-cp&quot;,&quot;app:app/lib/*&quot;,&quot;com.lakesidemutual.eurekaserver.EurekaServerApplication&quot;]&#xA;            " property="//@infrastructureNodes.0/@aspects.0/@properties.0"/>
+    </aspects>
+    <aspects name="ComposePart" import="//@imports.0">
+      <properties name="content" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            eureka-server:&#xA;                build: eureka-server&#xA;                image: lakesidemutual/eureka-server&#xA;                ports:&#xA;                  - &quot;8761:8761&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;              customer-core:&#xA;                build: customer-core&#xA;                image: lakesidemutual/customer-core&#xA;                depends_on:&#xA;                  - eureka-server&#xA;                environment:&#xA;                  - &quot;EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka&quot;&#xA;                  - &quot;SPRING_PROFILES_ACTIVE=eureka&quot;&#xA;                ports:&#xA;                  - &quot;8110:8110&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;            " property="//@infrastructureNodes.0/@aspects.1/@properties.0"/>
+    </aspects>
+    <usedByNodes imported="true" name="CustomerCoreContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.2"/>
+    <usedByNodes imported="true" name="CustomerManagementContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.3"/>
+    <usedByNodes imported="true" name="CustomerSelfServiceBackendContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.4"/>
+    <usedByNodes imported="true" name="PolicyManagementContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.5"/>
+    <reference import="//@imports.1">
+      <technology name="Eureka">
+        <environment environmentName="openjdk:11-jdk-slim"/>
+        <properties name="hostname" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="port" type="int">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="imageType" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="mavenGroupId" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="mavenArtifactId" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="mavenVersion" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="mavenName" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <properties name="programmingLanguage" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

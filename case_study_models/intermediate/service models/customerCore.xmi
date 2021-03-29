@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.services">
+  <imports name="domain" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.data" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.services" name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <interfaces name="cityStaticDataHolder" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="getCitiesForPostalCode" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode" visibility="PUBLIC">
+        <apiOperationComment comment="Get the cities for a particular postal code.">
+          <parameterComments comment="the postal code" required="true" parameter="//@microservices.0/@interfaces.0/@operations.0/@parameters.0"/>
+        </apiOperationComment>
+        <parameters name="postalCode" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode.postalCode" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="cities" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode.cities" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CitiesResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CitiesResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="customerInformationHolder" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="changeAddress" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress" visibility="PUBLIC">
+        <apiOperationComment comment="Change a customer's address.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.0"/>
+          <parameterComments comment="the customer's new address" required="true" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.1"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getIncludedFields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields" visibility="INTERNAL">
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto" visibility="INTERNAL">
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.customer" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.0"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.customerResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto" visibility="INTERNAL">
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="size" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.size" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerDtos" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.customerDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Get a specific set of customers.">
+          <parameterComments comment="a comma-separated list of customer ids" required="true" parameter="//@microservices.0/@interfaces.1/@operations.4/@parameters.0"/>
+          <parameterComments comment="a comma-separated list of the fields that should be included in the response" parameter="//@microservices.0/@interfaces.1/@operations.4/@parameters.1"/>
+        </apiOperationComment>
+        <parameters name="ids" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.ids" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.fields" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Update the profile of the customer with the given customer id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.5/@parameters.0"/>
+          <parameterComments comment="the customer's updated profile" required="true" parameter="//@microservices.0/@interfaces.1/@operations.5/@parameters.1"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerToUpdateNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customerToUpdateNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers" visibility="PUBLIC">
+        <apiOperationComment comment="Get all customers in pages of 10 entries per page.">
+          <parameterComments comment="search terms to filter the customers by name" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.0"/>
+          <parameterComments comment="the maximum number of customers per page" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.1"/>
+          <parameterComments comment="the offset of the page's first customer" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.2"/>
+          <parameterComments comment="a comma-separated list of the fields that should be included in the response" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.3"/>
+        </apiOperationComment>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.fields" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Create a new customer.">
+          <parameterComments comment="the customer's profile information" required="true" parameter="//@microservices.0/@interfaces.1/@operations.7/@parameters.0"/>
+        </apiOperationComment>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="customerInformationHolderSOAPAdapter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="changeAddress" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress" visibility="PUBLIC">
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getIncludedFields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields" visibility="INTERNAL">
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto" visibility="INTERNAL">
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.customer" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.0"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.customerResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto" visibility="INTERNAL">
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="size" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.size" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerDtos" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.customerDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomer" visibility="PUBLIC">
+        <parameters name="request" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomer.request" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerRequest" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerRequest" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer" visibility="PUBLIC">
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers" visibility="PUBLIC">
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer" visibility="PUBLIC">
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///home/jonas/dev/lemma-dev/lemma/examples/insurance-company/LEMMA models/customer-core/customerCore.data">
+  <contexts name="customerCore" qualifiedName="customerCore">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="id" qualifiedName="customerCore.Address.id" hidden="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerCore.Address.streetAddress" immutable="true">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerCore.Address.postalCode" immutable="true">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerCore.Address.city" immutable="true">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="random" qualifiedName="customerCore.CustomerId.random">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        </returnType>
+      </operations>
+      <dataFields name="id" qualifiedName="customerCore.CustomerId.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity">
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="firstname" qualifiedName="customerCore.CustomerProfileEntity.firstname">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerCore.CustomerProfileEntity.lastname">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerCore.CustomerProfileEntity.birthday">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="currentAddress" qualifiedName="customerCore.CustomerProfileEntity.currentAddress">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerCore.CustomerProfileEntity.email">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerCore.CustomerProfileEntity.phoneNumber">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="moveHistory" qualifiedName="customerCore.CustomerProfileEntity.moveHistory">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Addresses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Addresses"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot">
+      <featureNames>ENTITY</featureNames>
+      <featureNames>AGGREGATE</featureNames>
+      <operations name="moveToAddress" qualifiedName="customerCore.CustomerAggregateRoot.moveToAddress">
+        <parameters name="address" qualifiedName="customerCore.CustomerAggregateRoot.moveToAddress.address">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomerProfile" qualifiedName="customerCore.CustomerAggregateRoot.updateCustomerProfile">
+        <parameters name="updatedCustomerProfile" qualifiedName="customerCore.CustomerAggregateRoot.updateCustomerProfile.updatedCustomerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <dataFields name="id" qualifiedName="customerCore.CustomerAggregateRoot.id" immutable="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+      </dataFields>
+      <dataFields name="customerProfile" qualifiedName="customerCore.CustomerAggregateRoot.customerProfile" immutable="true">
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerFactory" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerFactory">
+      <featureNames>FACTORY</featureNames>
+      <operations name="create" qualifiedName="customerCore.CustomerFactory.create">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        </returnType>
+        <parameters name="customerProfile" qualifiedName="customerCore.CustomerFactory.create.customerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="formatPhoneNumber" qualifiedName="customerCore.CustomerFactory.formatPhoneNumber">
+        <returnType>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </returnType>
+        <parameters name="phoneNumberStr" qualifiedName="customerCore.CustomerFactory.formatPhoneNumber.phoneNumberStr">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <dataFields name="customerRepository" qualifiedName="customerCore.CustomerFactory.customerRepository" hidden="true" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerRepository"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerRepository"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PhoneNumberValidator" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PhoneNumberValidator">
+      <featureNames>SPECIFICATION</featureNames>
+      <operations name="isValid" qualifiedName="customerCore.PhoneNumberValidator.isValid">
+        <featureNames>VALIDATOR</featureNames>
+        <returnType>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </returnType>
+        <parameters name="phoneNumberStr" qualifiedName="customerCore.PhoneNumberValidator.isValid.phoneNumberStr">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerRepository">
+      <featureNames>REPOSITORY</featureNames>
+      <operations name="nextId" qualifiedName="customerCore.CustomerRepository.nextId">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        </returnType>
+      </operations>
+      <dataFields name="customerAggregate" qualifiedName="customerCore.CustomerRepository.customerAggregate">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="customerCore.CustomerRepository.customerId">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerService" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerService">
+      <featureNames>APPLICATION_SERVICE</featureNames>
+      <operations name="updateAddress" qualifiedName="customerCore.CustomerService.updateAddress">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerCore.CustomerService.updateAddress.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        </parameters>
+        <parameters name="updatedAddress" qualifiedName="customerCore.CustomerService.updateAddress.updatedAddress">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomerProfile" qualifiedName="customerCore.CustomerService.updateCustomerProfile">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerCore.CustomerService.updateCustomerProfile.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId"/>
+        </parameters>
+        <parameters name="updatedCustomerProfile" qualifiedName="customerCore.CustomerService.updateCustomerProfile.updatedCustomerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="customerCore.CustomerService.createCustomer">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        </returnType>
+        <parameters name="customerProfile" qualifiedName="customerCore.CustomerService.createCustomer.customerProfile">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileEntity"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="customerCore.CustomerService.getCustomers">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerAggregateRoots"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerAggregateRoots"/>
+        </returnType>
+        <parameters name="ids" qualifiedName="customerCore.CustomerService.getCustomers.ids">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomersPaginated" qualifiedName="customerCore.CustomerService.getCustomersPaginated">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerAggregateRoots"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerAggregateRoots"/>
+        </returnType>
+        <parameters name="filter" qualifiedName="customerCore.CustomerService.getCustomersPaginated.filter">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="customerCore.CustomerService.getCustomersPaginated.limit">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="customerCore.CustomerService.getCustomersPaginated.offset">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <operations name="matchesFilter" qualifiedName="customerCore.CustomerService.matchesFilter">
+        <returnType>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </returnType>
+        <parameters name="customer" qualifiedName="customerCore.CustomerService.matchesFilter.customer">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        </parameters>
+        <parameters name="filter" qualifiedName="customerCore.CustomerService.matchesFilter.filter">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <dataFields name="customerRepository" qualifiedName="customerCore.CustomerService.customerRepository" hidden="true" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerRepository"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerRepository"/>
+      </dataFields>
+      <dataFields name="customerFactory" qualifiedName="customerCore.CustomerService.customerFactory" hidden="true" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerFactory" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerFactory"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerFactory" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerFactory"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerCore.AddressDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto"/>
+        </returnType>
+        <parameters name="address" qualifiedName="customerCore.AddressDto.fromDomainObject.address">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        </parameters>
+      </operations>
+      <operations name="toDomainObject" qualifiedName="customerCore.AddressDto.toDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        </returnType>
+      </operations>
+      <dataFields name="streetAddress" qualifiedName="customerCore.AddressDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerCore.AddressDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerCore.AddressDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="firstname" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.firstname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.lastname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.birthday">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.email">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerCore.CustomerProfileUpdateRequestDto.phoneNumber">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="customerId" qualifiedName="customerCore.CustomerResponseDto.customerId" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="firstname" qualifiedName="customerCore.CustomerResponseDto.firstname" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerCore.CustomerResponseDto.lastname" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerCore.CustomerResponseDto.birthday" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerCore.CustomerResponseDto.streetAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerCore.CustomerResponseDto.postalCode" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerCore.CustomerResponseDto.city" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerCore.CustomerResponseDto.email" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerCore.CustomerResponseDto.phoneNumber" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="moveHistory" qualifiedName="customerCore.CustomerResponseDto.moveHistory" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Addresses"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Addresses"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomersResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomersResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="customers" qualifiedName="customerCore.CustomersResponseDto.customers" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="filter" qualifiedName="customerCore.PaginatedCustomerResponseDto.filter" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="limit" qualifiedName="customerCore.PaginatedCustomerResponseDto.limit" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="offset" qualifiedName="customerCore.PaginatedCustomerResponseDto.offset" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="size" qualifiedName="customerCore.PaginatedCustomerResponseDto.size" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="customers" qualifiedName="customerCore.PaginatedCustomerResponseDto.customers" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CityLookupService" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CityLookupService">
+      <featureNames>DOMAIN_SERVICE</featureNames>
+      <operations name="loadLookupMap" qualifiedName="customerCore.CityLookupService.loadLookupMap" hidden="true">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.PostalCodesAndCities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.PostalCodesAndCities"/>
+        </returnType>
+      </operations>
+      <operations name="getLookupMap" qualifiedName="customerCore.CityLookupService.getLookupMap" hidden="true">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.PostalCodesAndCities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.PostalCodesAndCities"/>
+        </returnType>
+      </operations>
+      <operations name="getCitiesForPostalCode" qualifiedName="customerCore.CityLookupService.getCitiesForPostalCode">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Cities"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Cities"/>
+        </returnType>
+        <parameters name="postalCode" qualifiedName="customerCore.CityLookupService.getCitiesForPostalCode.postalCode">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CitiesResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="cities" qualifiedName="customerCore.CitiesResponseDto.cities" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Cities"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Cities"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerRequest">
+      <dataFields name="id" qualifiedName="customerCore.GetCustomerRequest.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="GetCustomerResponse" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerResponse">
+      <dataFields name="customer" qualifiedName="customerCore.GetCustomerResponse.customer">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Customer"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Customer"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Customer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Customer">
+      <dataFields name="name" qualifiedName="customerCore.Customer.name">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerCore.Customer.birthday">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="address" qualifiedName="customerCore.Customer.address">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="segment" qualifiedName="customerCore.Customer.segment">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Profile" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerCore.Profile"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Profile" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerCore.Profile"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Addresses" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Addresses" structuredList="true">
+      <dataFields name="a" qualifiedName="customerCore.Addresses.a">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.Address"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="CustomerAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerAggregateRoots" structuredList="true">
+      <dataFields name="r" qualifiedName="customerCore.CustomerAggregateRoots.r">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" structuredList="true">
+      <dataFields name="d" qualifiedName="customerCore.CustomerResponseDtos.d">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="PostalCodesAndCities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.PostalCodesAndCities" structuredList="true">
+      <dataFields name="postalCode" qualifiedName="customerCore.PostalCodesAndCities.postalCode">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerCore.PostalCodesAndCities.city">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.Cities" structuredList="true">
+      <dataFields name="city" qualifiedName="customerCore.Cities.city">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" primitiveList="true">
+      <primitiveType name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="Profile" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerCore.Profile">
+      <fields name="N_A" qualifiedName="customerCore.Profile.N_A" initializationValue="n/a">
+        <initializationValueCompatibleTypes name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </fields>
+      <fields name="NORMAL" qualifiedName="customerCore.Profile.NORMAL" initializationValue="normal">
+        <initializationValueCompatibleTypes name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </fields>
+      <fields name="VIP" qualifiedName="customerCore.Profile.VIP" initializationValue="VIP">
+        <initializationValueCompatibleTypes name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </fields>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-management-backend/customerManagementBackend.services">
+  <imports name="customerManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-management-backend/customerManagementBackend.data" importTypeName="DATATYPES"/>
+  <imports name="customerCoreServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/service models/customerCore.xmi" importTypeName="MICROSERVICES"/>
+  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-management-backend/customerManagementBackend.services" name="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <requiredMicroservices name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" imported="true" import="//@imports.1"/>
+    <interfaces name="customerCoreClient" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers" visibility="PUBLIC">
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomer" visibility="PUBLIC">
+        <parameters name="ids" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomer.ids" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customersDto" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomer.customersDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomersDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomersDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomersDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomersDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomer.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.updateCustomer" visibility="PUBLIC">
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.updateCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerProfileDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerProfileDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.updateCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.updateCustomer.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="customerInformationHolder" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers" visibility="PUBLIC">
+        <apiOperationComment comment="Get all customers.">
+          <parameterComments comment="search terms to filter the customers by name" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.0"/>
+          <parameterComments comment="the maximum number of customers per page" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.1"/>
+          <parameterComments comment="the offset of the page's first customer" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.2"/>
+        </apiOperationComment>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="customers" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers.customers" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.PaginatedCustomerResponseDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.PaginatedCustomerResponseDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Get customer with a given customer id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.1/@parameters.0"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomer.customer" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomer.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomer.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.updateCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Update the profile of the customer with the given customer id">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.2/@parameters.0"/>
+          <parameterComments comment="the customer's updated profile" required="true" parameter="//@microservices.0/@interfaces.1/@operations.2/@parameters.1"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerProfile" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.updateCustomer.customerProfile" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerProfileDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerProfileDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.updateCustomer.customer" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.updateCustomer.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="interactionLogInformationHolder" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="getInteractionLog" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.getInteractionLog" visibility="PUBLIC">
+        <apiOperationComment comment="Get the interaction log for a customer with a given customer id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.2/@operations.0/@parameters.0"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.getInteractionLog.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="interactionLog" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.getInteractionLog.interactionLog" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionLogAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionLogAggregateRoot" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionLogAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionLogAggregateRoot" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="acknowledgeInteractions" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions" visibility="PUBLIC">
+        <apiOperationComment comment="Acknowledge all of a given customer's interactions up to the given interaction id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.2/@operations.1/@parameters.0"/>
+          <parameterComments comment="the id of the newest acknowledged interaction" required="true" parameter="//@microservices.0/@interfaces.2/@operations.1/@parameters.1"/>
+        </apiOperationComment>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId" import="//@imports.0"/>
+        </parameters>
+        <parameters name="interactionAcknowledgementDto" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions.interactionAcknowledgementDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionAcknowledgementDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionAcknowledgementDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionAcknowledgementDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionAcknowledgementDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="interactionLog" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions.interactionLog" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionLogAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionLogAggregateRoot" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InteractionLogAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.InteractionLogAggregateRoot" import="//@imports.0"/>
+        </parameters>
+        <parameters name="InteractionLogNotFound" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions.InteractionLogNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.acknowledgeInteractions.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="broadcastNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.broadcastNotifications" visibility="INTERNAL">
+        <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.broadcastNotifications.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="notificationInformationHolder" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.notificationInformationHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="getNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.notificationInformationHolder.getNotifications" visibility="PUBLIC">
+        <apiOperationComment comment="Get a list of all unacknowledged notifications."/>
+        <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.notificationInformationHolder.getNotifications.notifications" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="customerMessageController" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController" visibility="PUBLIC" hasImplementedOperations="true">
+      <operations name="processMessage" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.processMessage" visibility="PUBLIC">
+        <parameters name="message" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.processMessage.message" exchangePattern="IN" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="MessageDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.MessageDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="MessageDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.MessageDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="broadcastMessage" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.processMessage.broadcastMessage" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="MessageDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.MessageDto" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="MessageDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.MessageDto" import="//@imports.0"/>
+        </parameters>
+        <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.processMessage.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="Notifications" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.Notifications" import="//@imports.0"/>
+        </parameters>
+      </operations>
+      <operations name="broadcastNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.broadcastNotifications" visibility="INTERNAL">
+        <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.broadcastNotifications.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.0"/>
+        </parameters>
+      </operations>
+    </interfaces>
+  </microservices>
+</intermediate:IntermediateServiceModel>

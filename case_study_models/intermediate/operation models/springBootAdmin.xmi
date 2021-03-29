@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/spring-boot-admin/springBootAdmin.operation">
+  <imports name="container_base" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="springBootAdmin" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <infrastructureNodes name="SpringBootAdmin" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="javaWithSpring.SpringBootAdmin">
+    <defaultValues value="spring-boot-admin" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
+    <defaultValues value="true" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
+    <defaultValues value="http://localhost:8761/eureka" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.3"/>
+    <defaultValues value="true" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.4"/>
+    <defaultValues value="9000" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.1"/>
+    <aspects name="Dockerfile" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="contents" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            # syntax=docker/dockerfile:experimental&#xA;            FROM maven:3.6.1-jdk-8-alpine AS build&#xA;            ARG BASE=/usr/src/app&#xA;            COPY pom.xml ${BASE}/&#xA;            COPY src ${BASE}/src&#xA;            RUN --mount=type=cache,target=/root/.m2 mvn -Dmaven.gitcommitid.skip=true -f ${BASE}/pom.xml install -DskipTests&#xA;&#xA;            FROM openjdk:8-jdk-alpine&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/lib/* /app/lib/&#xA;            COPY --from=build /usr/src/app/target/dependency/META-INF /app/META-INF&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/classes /app&#xA;&#xA;            EXPOSE 9000&#xA;            ENTRYPOINT [&quot;java&quot;,&quot;-cp&quot;,&quot;app:app/lib/*&quot;,&quot;com.lakesidemutual.springbootadmin.SpringBootAdminApplication&quot;]&#xA;        " property="//@infrastructureNodes.0/@aspects.0/@properties.0"/>
+    </aspects>
+    <aspects name="ComposePart" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="contents" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            spring-boot-admin:&#xA;                build: spring-boot-admin&#xA;                image: lakesidemutual/spring-boot-admin&#xA;                depends_on:&#xA;                  - eureka-server&#xA;                environment:&#xA;                  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE : http://eureka-server:8761/eureka&#xA;                  SPRING_PROFILES_ACTIVE : eureka&#xA;                ports:&#xA;                  - &quot;9000:9000&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;        " property="//@infrastructureNodes.0/@aspects.1/@properties.0"/>
+    </aspects>
+    <reference import="//@imports.1">
+      <technology name="SpringBootAdmin">
+        <environment environmentName="spring-boot-admin" default="true"/>
+        <properties name="applicationName" type="string">
+          <featureNames>MANDATORY</featureNames>
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="port" type="int">
+          <featureNames>MANDATORY</featureNames>
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="enableAutoConfiguration" type="boolean">
+          <featureNames>MANDATORY</featureNames>
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="eurekaClientServiceUrlDefaultZone" type="string">
+          <featureNames>MANDATORY</featureNames>
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="eurekaInstancePreferIpAddress" type="boolean">
+          <featureNames>MANDATORY</featureNames>
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+      </technology>
+    </reference>
+  </infrastructureNodes>
+</intermediate:IntermediateOperationModel>

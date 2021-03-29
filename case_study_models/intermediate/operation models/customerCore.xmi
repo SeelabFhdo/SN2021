@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.operation">
+  <imports name="customerCoreServices" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/service models/customerCore.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="container_base" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="protocolTechnology" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/eurekaServer.xmi" importTypeName="OPERATION_NODES"/>
+  <containers name="CustomerCoreContainer" imports="//@imports.1 //@imports.2" operationEnvironment="//@containers.0/@technologyReference/@technology/@environment" qualifiedDeploymentTechnologyName="container_base.Kubernetes">
+    <deployedServices name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" imported="true" import="//@imports.0" effectivelyImplemented="true" microserviceType="FUNCTIONAL" visibility="PUBLIC"/>
+    <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@containers.0/@endpoints.0/@endpointTechnology">
+      <addresses>http://localhost:8110</addresses>
+      <endpointTechnology name="javaWithSpring" import="//@imports.2"/>
+    </endpoints>
+    <defaultValues value="CustomerCoreService" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.0"/>
+    <defaultValues value="8110" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.1"/>
+    <defaultValues value="Authorization" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.12"/>
+    <defaultValues value="b318ad736c6c844b" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.13"/>
+    <defaultValues value="999ab497f8ec1052" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.13"/>
+    <defaultValues value="9b93ebe19e16bbbd" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.13"/>
+    <defaultValues value="http://localhost:8761" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.11"/>
+    <aspects name="Dockerfile" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="contents" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            # syntax=docker/dockerfile:experimental&#xA;            FROM maven:3.6.1-jdk-8-alpine AS build&#xA;            ARG BASE=/usr/src/app&#xA;            COPY pom.xml ${BASE}/&#xA;            COPY src ${BASE}/src&#xA;            RUN --mount=type=cache,target=/root/.m2 mvn -f ${BASE}/pom.xml install -DskipTests&#xA;&#xA;            FROM openjdk:8-jdk-alpine&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/lib/* /app/lib/&#xA;            COPY --from=build /usr/src/app/target/dependency/META-INF /app/META-INF&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/classes /app&#xA;&#xA;            EXPOSE 8110&#xA;            ENTRYPOINT [&quot;java&quot;,&quot;-cp&quot;,&quot;app:app/lib/*&quot;,&quot;com.lakesidemutual.customercore.CustomerCoreApplication&quot;]&#xA;        " property="//@containers.0/@aspects.0/@properties.0"/>
+    </aspects>
+    <aspects name="ComposePart" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="contents" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="&#xA;            customer-core:&#xA;                build: customer-core&#xA;                image: lakesidemutual/customer-core&#xA;                depends_on:&#xA;                  - eureka-server&#xA;                environment:&#xA;                  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE : http://eureka-server:8761/eureka&#xA;                  SPRING_PROFILES_ACTIVE : eureka&#xA;                ports:&#xA;                  - &quot;8110:8110&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;        " property="//@containers.0/@aspects.1/@properties.0"/>
+    </aspects>
+    <dependsOnNodes imported="true" name="ServiceDiscovery" qualifiedTechnologyName="Eureka.Eureka" import="//@imports.3"/>
+    <technologyReference import="//@imports.1">
+      <technology name="Kubernetes">
+        <environment environmentName="golang"/>
+        <properties name="springApplicationName" type="string"/>
+        <properties name="serverPort" type="int"/>
+        <properties name="springDatasourceUsername" type="string"/>
+        <properties name="springDatasourcePassword" type="string"/>
+        <properties name="springDatasourceUrl" type="string"/>
+        <properties name="springDataMongodbHost" type="string"/>
+        <properties name="springDataMongodbPort" type="int"/>
+        <properties name="springDataMongodbUri" type="string"/>
+        <properties name="springDataMongodbDatabase" type="string"/>
+        <properties name="springDataMongodbUsername" type="string"/>
+        <properties name="stringDataMongodbPassword" type="string"/>
+        <properties name="eurekaUri" type="string"/>
+        <properties name="apiKeyHeader" type="string">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="apiKeyValidKey" type="string"/>
+        <properties name="apiKeyValue" type="string">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="rateLimitPerMinute" type="int"/>
+      </technology>
+    </technologyReference>
+  </containers>
+</intermediate:IntermediateOperationModel>

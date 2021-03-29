@@ -10,8 +10,9 @@ fi
 
 SCRIPT_PATH="scripts/run_model_processor.py"
 CONTAINER_BASE_PATH="code generators/de.fhdo.lemma.model_processing.code_generation.container_base/docker/execution.yaml"
+GENERATED_ARTIFACTS="generated_artifacts"
 
-mkdir operation_model_codegeneration
+mkdir $GENERATED_ARTIFACTS
 
 
 ####################################################################################################
@@ -22,30 +23,34 @@ mkdir operation_model_codegeneration
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "insurance_company_case_study/LEMMA models/customer-core/customerCore.operation" \
-         -i "insurance_company_case_study/intermediate/operation models/customerCore.xmi" \
-    -t "$PWD/operation_model_codegeneration"
+         -s "case_study_models/customer-core/customerCore.operation" \
+         -i "case_study_models/intermediate/operation models/customerCore.xmi" \
+    -t "$PWD/$GENERATED_ARTIFACTS"
 
 # Container Base Generator - Customer Management Backend    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "insurance_company_case_study/LEMMA models/customer-management-backend/customerManagementBackend.operation" \
-         -i "insurance_company_case_study/intermediate/operation models/customerManagementBackend.xmi" \
-    -t "$PWD/operation_model_codegeneration"
+         -s "case_study_models/customer-management-backend/customerManagementBackend.operation" \
+         -i "case_study_models/intermediate/operation models/customerManagementBackend.xmi" \
+    -t "$PWD/$GENERATED_ARTIFACTS"
 
 # Container Base Generator - Self Service    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "insurance_company_case_study/LEMMA models/customer-self-service-backend/customerSelfServiceBackend.operation" \
-         -i "insurance_company_case_study/intermediate/operation models/customerSelfServiceBackend.xmi" \
-    -t "$PWD/operation_model_codegeneration"
+         -s "case_study_models/customer-self-service-backend/customerSelfServiceBackend.operation" \
+         -i "case_study_models/intermediate/operation models/customerSelfServiceBackend.xmi" \
+    -t "$PWD/$GENERATED_ARTIFACTS"
     
 # Container Base Generator - Policy Management    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "insurance_company_case_study/LEMMA models/policy-management-backend/policyManagementBackend.operation" \
-         -i "insurance_company_case_study/intermediate/operation models/policyManagementBackend.xmi" \
-    -t "$PWD/operation_model_codegeneration"
+         -s "case_study_models/policy-management-backend/policyManagementBackend.operation" \
+         -i "case_study_models/intermediate/operation models/policyManagementBackend.xmi" \
+    -t "$PWD/$GENERATED_ARTIFACTS"
+
+####################################################################################################
+# System Visualizer
+####################################################################################################
