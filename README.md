@@ -6,7 +6,7 @@ The folder [case_study_models](https://github.com/SeelabFhdo/SN2021/tree/master/
 
 The OpenAPI specification for the Lakeside Mutual services and the corresponding LEMMA models are included in the [generated_models_and_OpenApi](https://github.com/SeelabFhdo/SN2021/tree/master/generated_models_and_OpenApi) of this repository. 
 
-For counting the generated artefacts' lines, we provide a script, which is located in the [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder.
+For counting the generated artefacts' lines, we provide a script, which is located in the [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder. For the majority of the scripts to run, you need Python 3 and the [`cloc` utility](https://github.com/AlDanial/cloc) for automated LOC counting.
 
 The folder [pre_generated_artefacts](https://github.com/SeelabFhdo/SN2021/tree/master/pre_generated_artefacts) contains all the artefacts we create during our proposed workflow for simple reviewing purposes. To validate these results, we provide a step-by-step guideline below, including a [run_code_generation.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_code_generation.sh) for building those artefacts.
 
@@ -42,4 +42,4 @@ For the actual reproduction, please follow these steps:
 
 ### Retrieving the Evaluation Results
 ---
-In order to retrieve the evaluation results mentioned in the Section 5 of the article, review or execute the scripts from the cloned [Validation/Analysis](https://github.com/SeelabFhdo/jss2020/tree/master/Validation/Analysis) folder corresponding to the different phases of our methodology. For the majority of the scripts to run, you need Python 3 and the [`cloc` utility](https://github.com/AlDanial/cloc) for automated LOC counting.
+In order to retrieve the evaluation results mentioned in the Section 7 of the article, review or execute the script from the cloned [run_code_generation.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_code_generation.sh) folder. 
