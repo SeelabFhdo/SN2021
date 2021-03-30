@@ -11,6 +11,7 @@ LOC_SCRIPTS = {
     'locGenModelsCustomerManagement':
         'cloc_scripts/loc_genmodels_customer_management.sh',
     'locManModelsLm': 'cloc_scripts/loc_manmodels_lm.sh',
+    'locManModelsLmOperation': 'cloc_scripts/loc_manmodels_lm_operation.sh',
     'locManModelsCustomerCore':
         'cloc_scripts/loc_manmodels_customer_core_all.sh',
     'locManModelsCustomerManagement':
