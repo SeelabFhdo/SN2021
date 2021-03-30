@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///home/jonas/dev/lemma-dev/lemma/examples/insurance-company/LEMMA models/customer-management-backend/customerManagementBackend.data">
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-management-backend/customerManagementBackend.data">
   <contexts name="customerManagementBackend" qualifiedName="customerManagementBackend">
     <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerManagementBackend.CustomerId">
       <featureNames>VALUE_OBJECT</featureNames>

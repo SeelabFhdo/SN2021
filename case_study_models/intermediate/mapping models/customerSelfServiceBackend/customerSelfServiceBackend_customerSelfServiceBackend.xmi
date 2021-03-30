@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateDataModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-self-service-backend/customerSelfServiceBackend.data">
+  <imports name="java" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="hystrix" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/hystrix.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="lakesideMutual" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/lakesideMutual.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="map" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/map.technology" importTypeName="TECHNOLOGY"/>
+  <contexts name="customerSelfService" qualifiedName="customerSelfService">
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="addresses" property="//@contexts.0/@complexTypes.0/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.Address.id" hidden="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerSelfService.Address.streetAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerSelfService.Address.postalCode" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerSelfService.Address.city" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="random" qualifiedName="customerSelfService.CustomerId.random">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        </returnType>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <dataFields name="id" qualifiedName="customerSelfService.CustomerId.id">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.AddressDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        </returnType>
+        <parameters name="address" qualifiedName="customerSelfService.AddressDto.fromDomainObject.address">
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.2/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.2/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <operations name="toDomainObject" qualifiedName="customerSelfService.AddressDto.toDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.2/@operations.1/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="addresses" property="//@contexts.0/@complexTypes.2/@operations.1/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+      </operations>
+      <dataFields name="streetAddress" qualifiedName="customerSelfService.AddressDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerSelfService.AddressDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerSelfService.AddressDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerIdDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerIdDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.CustomerIdDto.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+      <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="customerId" qualifiedName="customerSelfService.CustomerDto.customerId">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="customerProfile" qualifiedName="customerSelfService.CustomerDto.customerProfile">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileDto"/>
+        <aspects name="JsonUnwrapped" qualifiedName="javaWithSpring.JsonUnwrapped" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomersDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomersDto">
+      <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="customers" qualifiedName="customerSelfService.CustomersDto.customers">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.CustomerDtos"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.CustomerDtos"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="firstname" qualifiedName="customerSelfService.CustomerProfileDto.firstname">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerSelfService.CustomerProfileDto.lastname">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerSelfService.CustomerProfileDto.birthday">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="currentAddress" qualifiedName="customerSelfService.CustomerProfileDto.currentAddress">
+        <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <aspects name="JsonUnwrapped" qualifiedName="javaWithSpring.JsonUnwrapped" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerSelfService.CustomerProfileDto.email">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerSelfService.CustomerProfileDto.phoneNumber">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="moveHistory" qualifiedName="customerSelfService.CustomerProfileDto.moveHistory">
+        <type xsi:type="intermediate:IntermediateComplexType" name="AddressDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.AddressDtos"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.AddressDtos"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PhoneNumberValidator" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.PhoneNumberValidator">
+      <featureNames>SPECIFICATION</featureNames>
+      <operations name="isValid" qualifiedName="customerSelfService.PhoneNumberValidator.isValid">
+        <featureNames>VALIDATOR</featureNames>
+        <returnType>
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </returnType>
+        <parameters name="phoneNumberStr" qualifiedName="customerSelfService.PhoneNumberValidator.isValid.phoneNumberStr">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="firstname" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.firstname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.lastname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.birthday">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="JsonFormat" qualifiedName="javaWithSpring.JsonFormat" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="pattern" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="yyyy-MM-dd" property="//@contexts.0/@complexTypes.8/@dataFields.2/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.email">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Email" qualifiedName="javaWithSpring.Email" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto.phoneNumber">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="PhoneNumber" qualifiedName="lakesideMutual.PhoneNumber" import="//@imports.2"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerRegistrationRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerRegistrationRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="firstname" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.firstname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.lastname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="birthday" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.birthday">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="JsonFormat" qualifiedName="javaWithSpring.JsonFormat" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="pattern" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="yyyy-MM-dd" property="//@contexts.0/@complexTypes.9/@dataFields.2/@aspects.0/@properties.0"/>
+        </aspects>
+        <aspects name="Past" qualifiedName="javaWithSpring.Past" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="city" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.city">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="streetAddress" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.streetAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="postalCode" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.postalCode">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="phoneNumber" qualifiedName="customerSelfService.CustomerRegistrationRequestDto.phoneNumber">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="PhoneNumber" qualifiedName="lakesideMutual.PhoneNumber" import="//@imports.2"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UserLoginEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginEntity">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="user_logins" property="//@contexts.0/@complexTypes.10/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.UserLoginEntity.id">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="authorities" qualifiedName="customerSelfService.UserLoginEntity.authorities">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerSelfService.UserLoginEntity.email">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="password" qualifiedName="customerSelfService.UserLoginEntity.password">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="customerSelfService.UserLoginEntity.customerId">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="id" property="//@contexts.0/@complexTypes.10/@dataFields.4/@aspects.1/@properties.0"/>
+          <propertyValues value="customerId" property="//@contexts.0/@complexTypes.10/@dataFields.4/@aspects.1/@properties.1"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UserSecurityDetails" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserSecurityDetails">
+      <aspects name="UserDetails" qualifiedName="javaWithSpring.UserDetails" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <dataFields name="accountNonExpired" qualifiedName="customerSelfService.UserSecurityDetails.accountNonExpired" initializationValue="true">
+        <initializationValueCompatibleTypes name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Boolean" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <aspects name="JsonIgnore" qualifiedName="javaWithSpring.JsonIgnore" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="accountNonLocked" qualifiedName="customerSelfService.UserSecurityDetails.accountNonLocked" initializationValue="true">
+        <initializationValueCompatibleTypes name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Boolean" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <aspects name="JsonIgnore" qualifiedName="javaWithSpring.JsonIgnore" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="authorities" qualifiedName="customerSelfService.UserSecurityDetails.authorities">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="GrantedAuthorities" origin="TECHNOLOGY" kind="LIST" qualifiedName="javaWithSpring._types.GrantedAuthorities" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Authorities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.Authorities"/>
+      </dataFields>
+      <dataFields name="credentialsNonExpired" qualifiedName="customerSelfService.UserSecurityDetails.credentialsNonExpired" initializationValue="true">
+        <initializationValueCompatibleTypes name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Boolean" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <aspects name="JsonIgnore" qualifiedName="javaWithSpring.JsonIgnore" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="email" qualifiedName="customerSelfService.UserSecurityDetails.email">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="enabled" qualifiedName="customerSelfService.UserSecurityDetails.enabled" initializationValue="true">
+        <initializationValueCompatibleTypes name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Boolean" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <aspects name="JsonIgnore" qualifiedName="javaWithSpring.JsonIgnore" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="id" qualifiedName="customerSelfService.UserSecurityDetails.id">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="password" qualifiedName="customerSelfService.UserSecurityDetails.password">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="JsonIgnore" qualifiedName="javaWithSpring.JsonIgnore" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UserDetailsServiceImpl" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserDetailsServiceImpl">
+      <featureNames>DOMAIN_SERVICE</featureNames>
+      <operations name="loadUserByUsername" qualifiedName="customerSelfService.UserDetailsServiceImpl.loadUserByUsername">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="UserDetails" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.UserDetails"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="UserDetails" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.UserDetails"/>
+          <aspects name="UserDetails" qualifiedName="javaWithSpring.UserDetails" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </returnType>
+        <parameters name="email" qualifiedName="customerSelfService.UserDetailsServiceImpl.loadUserByUsername.email">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <dataFields name="userRepository" qualifiedName="customerSelfService.UserDetailsServiceImpl.userRepository" hidden="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="UserLoginRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginRepository"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="UserLoginRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginRepository"/>
+        <aspects name="Autowired" qualifiedName="javaWithSpring.Autowired" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AuthenticationRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AuthenticationRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="email" qualifiedName="customerSelfService.AuthenticationRequestDto.email">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="password" qualifiedName="customerSelfService.AuthenticationRequestDto.password">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="AuthenticationResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AuthenticationResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="email" qualifiedName="customerSelfService.AuthenticationResponseDto.email">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="token" qualifiedName="customerSelfService.AuthenticationResponseDto.token">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="SignupRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.SignupRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="email" qualifiedName="customerSelfService.SignupRequestDto.email">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Email" qualifiedName="javaWithSpring.Email" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="password" qualifiedName="customerSelfService.SignupRequestDto.password">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UserResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="email" qualifiedName="customerSelfService.UserResponseDto.email" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="customerSelfService.UserResponseDto.customerId" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="UserLoginRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginRepository">
+      <featureNames>REPOSITORY</featureNames>
+      <operations name="findByEmail" qualifiedName="customerSelfService.UserLoginRepository.findByEmail">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="UserLoginEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="user_logins" property="//@contexts.0/@complexTypes.17/@operations.0/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="UserLoginEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="user_logins" property="//@contexts.0/@complexTypes.17/@operations.0/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="email" qualifiedName="customerSelfService.UserLoginRepository.findByEmail.email">
+          <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <dataFields name="login" qualifiedName="customerSelfService.UserLoginRepository.login">
+        <type xsi:type="intermediate:IntermediateComplexType" name="UserLoginEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="UserLoginEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.UserLoginEntity">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="user_logins" property="//@contexts.0/@complexTypes.17/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+      <dataFields name="id" qualifiedName="customerSelfService.UserLoginRepository.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CitiesResponseDto">
+      <aspects name="AtomicParameter" qualifiedName="map.AtomicParameter" import="//@imports.3">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="cities" qualifiedName="customerSelfService.CitiesResponseDto.cities">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.Cities"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.Cities"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDecisionEvent">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <featureNames>DOMAIN_EVENT</featureNames>
+      <dataFields name="date" qualifiedName="customerSelfService.CustomerDecisionEvent.date">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceQuoteRequestId" qualifiedName="customerSelfService.CustomerDecisionEvent.insuranceQuoteRequestId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="quoteAccepted" qualifiedName="customerSelfService.CustomerDecisionEvent.quoteAccepted">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.20/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.CustomerInfoEntity.id">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="customerId" qualifiedName="customerSelfService.CustomerInfoEntity.customerId" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="id" property="//@contexts.0/@complexTypes.20/@dataFields.1/@aspects.1/@properties.0"/>
+          <propertyValues value="customerId" property="//@contexts.0/@complexTypes.20/@dataFields.1/@aspects.1/@properties.1"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="firstname" qualifiedName="customerSelfService.CustomerInfoEntity.firstname" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerSelfService.CustomerInfoEntity.lastname" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="contactAddress" qualifiedName="customerSelfService.CustomerInfoEntity.contactAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="addresses" property="//@contexts.0/@complexTypes.20/@dataFields.4/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+      <dataFields name="billingAddress" qualifiedName="customerSelfService.CustomerInfoEntity.billingAddress" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="Address" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.Address">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="addresses" property="//@contexts.0/@complexTypes.20/@dataFields.5/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.21/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.InsuranceOptionsEntity.id">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="startDate" qualifiedName="customerSelfService.InsuranceOptionsEntity.startDate" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceType" qualifiedName="customerSelfService.InsuranceOptionsEntity.insuranceType" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceType" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceType"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceType" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceType"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="id" property="//@contexts.0/@complexTypes.21/@dataFields.2/@aspects.1/@properties.0"/>
+          <propertyValues value="customerId" property="//@contexts.0/@complexTypes.21/@dataFields.2/@aspects.1/@properties.1"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="deductible" qualifiedName="customerSelfService.InsuranceOptionsEntity.deductible" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="amount" property="//@contexts.0/@complexTypes.21/@dataFields.3/@aspects.1/@properties.0"/>
+          <propertyValues value="deductibleAmount" property="//@contexts.0/@complexTypes.21/@dataFields.3/@aspects.1/@properties.1"/>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="currency" property="//@contexts.0/@complexTypes.21/@dataFields.3/@aspects.2/@properties.0"/>
+          <propertyValues value="deductibleCurrency" property="//@contexts.0/@complexTypes.21/@dataFields.3/@aspects.2/@properties.1"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.22/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>ENTITY</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.InsuranceQuoteEntity.id">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="expirationDate" qualifiedName="customerSelfService.InsuranceQuoteEntity.expirationDate" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insurancePremium" qualifiedName="customerSelfService.InsuranceQuoteEntity.insurancePremium" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="amount" property="//@contexts.0/@complexTypes.22/@dataFields.2/@aspects.1/@properties.0"/>
+          <propertyValues value="insurancePremiumAmount" property="//@contexts.0/@complexTypes.22/@dataFields.2/@aspects.1/@properties.1"/>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="currency" property="//@contexts.0/@complexTypes.22/@dataFields.2/@aspects.2/@properties.0"/>
+          <propertyValues value="insurancePremiumCurrency" property="//@contexts.0/@complexTypes.22/@dataFields.2/@aspects.2/@properties.1"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="policyLimit" qualifiedName="customerSelfService.InsuranceQuoteEntity.policyLimit" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        <aspects name="Embedded" qualifiedName="javaWithSpring.Embedded" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="amount" property="//@contexts.0/@complexTypes.22/@dataFields.3/@aspects.1/@properties.0"/>
+          <propertyValues value="policyLimitAmount" property="//@contexts.0/@complexTypes.22/@dataFields.3/@aspects.1/@properties.1"/>
+        </aspects>
+        <aspects name="AttributeOverrideColumn" qualifiedName="javaWithSpring.AttributeOverrideColumn" import="//@imports.0">
+          <properties name="name" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="column" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="currency" property="//@contexts.0/@complexTypes.22/@dataFields.3/@aspects.2/@properties.0"/>
+          <propertyValues value="policyLimitCurrency" property="//@contexts.0/@complexTypes.22/@dataFields.3/@aspects.2/@properties.1"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteExpiredEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteExpiredEvent">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <featureNames>DOMAIN_EVENT</featureNames>
+      <dataFields name="date" qualifiedName="customerSelfService.InsuranceQuoteExpiredEvent.date">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceQuoteRequestId" qualifiedName="customerSelfService.InsuranceQuoteExpiredEvent.insuranceQuoteRequestId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="insurancequoterequests" property="//@contexts.0/@complexTypes.24/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>AGGREGATE</featureNames>
+      <featureNames>ENTITY</featureNames>
+      <operations name="getStatus" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.getStatus">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+            <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+              <properties name="javaCode" type="string">
+                <featureNames>MANDATORY</featureNames>
+              </properties>
+              <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.24/@operations.0/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+            <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+              <properties name="javaCode" type="string">
+                <featureNames>MANDATORY</featureNames>
+              </properties>
+              <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.24/@operations.0/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+      </operations>
+      <operations name="changeStatusTo" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.changeStatusTo" hidden="true">
+        <parameters name="newStatus" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.changeStatusTo.newStatus">
+          <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+            <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+              <properties name="javaCode" type="string">
+                <featureNames>MANDATORY</featureNames>
+              </properties>
+              <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.24/@operations.1/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+            <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+              <properties name="javaCode" type="string">
+                <featureNames>MANDATORY</featureNames>
+              </properties>
+              <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.24/@operations.1/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.changeStatusTo.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="acceptRequest" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.acceptRequest">
+        <parameters name="insuranceQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.acceptRequest.insuranceQuote">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.24/@operations.2/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.24/@operations.2/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.acceptRequest.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="rejectRequest" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.rejectRequest">
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.rejectRequest.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="acceptQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.acceptQuote">
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.acceptQuote.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="rejectQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.rejectQuote">
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.rejectQuote.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="markQuoteAsExpired" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.markQuoteAsExpired">
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.markQuoteAsExpired.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="finalizeQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.finalizeQuote">
+        <parameters name="policyId" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.finalizeQuote.policyId">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.finalizeQuote.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <dataFields name="id" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.id" immutable="true">
+        <featureNames>IDENTIFIER</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.date" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="statusHistory" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.statusHistory" immutable="true">
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChanges" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChanges"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChanges" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChanges"/>
+        <aspects name="OneToMany" qualifiedName="javaWithSpring.OneToMany" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+          <properties name="fetch" type="string"/>
+          <propertyValues value="EAGER" property="//@contexts.0/@complexTypes.24/@dataFields.2/@aspects.0/@properties.1"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="customerInfo" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.customerInfo" immutable="true">
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.24/@dataFields.3/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+        <aspects name="OneToMany" qualifiedName="javaWithSpring.OneToMany" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+          <properties name="fetch" type="string"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="insuranceOptions" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.insuranceOptions" immutable="true">
+        <featureNames>PART</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.24/@dataFields.4/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+        <aspects name="OneToMany" qualifiedName="javaWithSpring.OneToMany" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+          <properties name="fetch" type="string"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="insuranceQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.insuranceQuote" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.24/@dataFields.5/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+        <aspects name="OneToMany" qualifiedName="javaWithSpring.OneToMany" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="cascade" type="string" defaultValue="ALL"/>
+          <properties name="fetch" type="string"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="policyId" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot.policyId" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteRequestEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestEvent">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <featureNames>DOMAIN_EVENT</featureNames>
+      <dataFields name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestEvent.date">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceQuoteRequestDto" qualifiedName="customerSelfService.InsuranceQuoteRequestEvent.insuranceQuoteRequestDto">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteResponseEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <featureNames>DOMAIN_EVENT</featureNames>
+      <dataFields name="date" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.date">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceQuoteRequestId" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.insuranceQuoteRequestId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="requestAccepted" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.requestAccepted">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+      </dataFields>
+      <dataFields name="expirationDate" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.expirationDate">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insurancePremium" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.insurancePremium">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+      </dataFields>
+      <dataFields name="policyLimit" qualifiedName="customerSelfService.InsuranceQuoteResponseEvent.policyLimit">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceType" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceType">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="name" qualifiedName="customerSelfService.InsuranceType.name" immutable="true">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="amount" qualifiedName="customerSelfService.MoneyAmount.amount" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="BigDecimal" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.BigDecimal" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="currency" qualifiedName="customerSelfService.MoneyAmount.currency" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Currency" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Currency" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PolicyCreatedEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.PolicyCreatedEvent">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <featureNames>DOMAIN_EVENT</featureNames>
+      <dataFields name="date" qualifiedName="customerSelfService.PolicyCreatedEvent.date">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="insuranceQuoteRequestId" qualifiedName="customerSelfService.PolicyCreatedEvent.insuranceQuoteRequestId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="policyId" qualifiedName="customerSelfService.PolicyCreatedEvent.policyId">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="RequestStatusChange" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChange">
+      <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+        <featureNames>SINGLE_VALUED</featureNames>
+        <properties name="name" type="string"/>
+        <propertyValues value="requeststatuschanges" property="//@contexts.0/@complexTypes.30/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="id" qualifiedName="customerSelfService.RequestStatusChange.id">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="GeneratedValue" qualifiedName="javaWithSpring.GeneratedValue" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="date" qualifiedName="customerSelfService.RequestStatusChange.date" immutable="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="status" qualifiedName="customerSelfService.RequestStatusChange.status" immutable="true">
+        <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+          <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+            <properties name="javaCode" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.30/@dataFields.2/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+        <aspects name="Enumerated" qualifiedName="javaWithSpring.Enumerated" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="enumType" type="string"/>
+          <propertyValues value="STRING" property="//@contexts.0/@complexTypes.30/@dataFields.2/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerCoreRemoteProxy" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerCoreRemoteProxy">
+      <featureNames>INFRASTRUCTURE_SERVICE</featureNames>
+      <operations name="getCustomer" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getCustomer">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getCustomer.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        </parameters>
+        <aspects name="HystrixCommand" qualifiedName="hystrix.HystrixCommand" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="fallbackMethod" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="getDummyCustomer" property="//@contexts.0/@complexTypes.31/@operations.0/@aspects.0/@properties.0"/>
+        </aspects>
+      </operations>
+      <operations name="getDummyCustomer" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getDummyCustomer">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getDummyCustomer.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        </parameters>
+      </operations>
+      <operations name="changeAddress" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.changeAddress">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.changeAddress.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.changeAddress.requestDto">
+          <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.createCustomer">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+            <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="requestDto" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.createCustomer.requestDto">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerProfileUpdateRequestDto"/>
+        </parameters>
+      </operations>
+      <operations name="getCitiesForPostalCode" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getCitiesForPostalCode">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CitiesResponseDto">
+            <aspects name="AtomicParameter" qualifiedName="map.AtomicParameter" import="//@imports.3">
+              <featureNames>SINGLE_VALUED</featureNames>
+            </aspects>
+          </originalType>
+        </returnType>
+        <parameters name="postalCode" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.getCitiesForPostalCode.postalCode">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="resetCounters" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.resetCounters"/>
+      <dataFields name="customerCoreBaseURL" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.customerCoreBaseURL" hidden="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Value" qualifiedName="javaWithSpring.Value" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="value" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="${customercore.baseURL}" property="//@contexts.0/@complexTypes.31/@dataFields.0/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="successfulAttemptsCounter" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.successfulAttemptsCounter" immutable="true" initializationValue="0">
+        <initializationValueCompatibleTypes name="byte" origin="BUILTIN" kind="PRIMITIVE" size="8"/>
+        <initializationValueCompatibleTypes name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <initializationValueCompatibleTypes name="short" origin="BUILTIN" kind="PRIMITIVE" size="16"/>
+        <initializationValueCompatibleTypes name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="unsuccessfulAttemptsCounter" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.unsuccessfulAttemptsCounter" immutable="true" initializationValue="0">
+        <initializationValueCompatibleTypes name="byte" origin="BUILTIN" kind="PRIMITIVE" size="8"/>
+        <initializationValueCompatibleTypes name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <initializationValueCompatibleTypes name="short" origin="BUILTIN" kind="PRIMITIVE" size="16"/>
+        <initializationValueCompatibleTypes name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+      <dataFields name="fallBackMethodExecutionsCounter" qualifiedName="customerSelfService.CustomerCoreRemoteProxy.fallBackMethodExecutionsCounter" immutable="true" initializationValue="0">
+        <initializationValueCompatibleTypes name="byte" origin="BUILTIN" kind="PRIMITIVE" size="8"/>
+        <initializationValueCompatibleTypes name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <initializationValueCompatibleTypes name="short" origin="BUILTIN" kind="PRIMITIVE" size="16"/>
+        <initializationValueCompatibleTypes name="float" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        <initializationValueCompatibleTypes name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteRequestRepository" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository">
+      <featureNames>REPOSITORY</featureNames>
+      <operations name="findByCustomerInfo_CustomerIdOrderByDateDesc" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository.findByCustomerInfo_CustomerIdOrderByDateDesc">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots"/>
+        </returnType>
+        <parameters name="customerId" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository.findByCustomerInfo_CustomerIdOrderByDateDesc.customerId">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerId"/>
+        </parameters>
+      </operations>
+      <operations name="findAllByOrderByDateDesc" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository.findAllByOrderByDateDesc">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots"/>
+        </returnType>
+      </operations>
+      <dataFields name="quoteRequest" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository.quoteRequest">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="insurancequoterequests" property="//@contexts.0/@complexTypes.32/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+      <dataFields name="id" qualifiedName="customerSelfService.InsuranceQuoteRequestRepository.id">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="PolicyManagementMessageProducer" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.PolicyManagementMessageProducer">
+      <featureNames>INFRASTRUCTURE_SERVICE</featureNames>
+      <operations name="sendInsuranceQuoteRequest" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendInsuranceQuoteRequest">
+        <parameters name="date" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendInsuranceQuoteRequest.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="insuranceQuoteRequestDto" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendInsuranceQuoteRequest.insuranceQuoteRequestDto">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+        </parameters>
+      </operations>
+      <operations name="sendCustomerDecision" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendCustomerDecision">
+        <parameters name="date" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendCustomerDecision.date">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="insuranceQuoteRequestId" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendCustomerDecision.insuranceQuoteRequestId">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        </parameters>
+        <parameters name="quoteAccepted" qualifiedName="customerSelfService.PolicyManagementMessageProducer.sendCustomerDecision.quoteAccepted">
+          <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Boolean" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Boolean" import="//@imports.0"/>
+          <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="boolean" origin="BUILTIN" kind="PRIMITIVE" size="1"/>
+        </parameters>
+      </operations>
+      <operations name="emitInsuranceQuoteRequestEvent" qualifiedName="customerSelfService.PolicyManagementMessageProducer.emitInsuranceQuoteRequestEvent" hidden="true">
+        <parameters name="insuranceQuoteRequestEvent" qualifiedName="customerSelfService.PolicyManagementMessageProducer.emitInsuranceQuoteRequestEvent.insuranceQuoteRequestEvent">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestEvent"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestEvent"/>
+        </parameters>
+      </operations>
+      <operations name="emitCustomerDecisionEvent" qualifiedName="customerSelfService.PolicyManagementMessageProducer.emitCustomerDecisionEvent" hidden="true">
+        <parameters name="customerDecisionEvent" qualifiedName="customerSelfService.PolicyManagementMessageProducer.emitCustomerDecisionEvent.customerDecisionEvent">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDecisionEvent"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDecisionEvent"/>
+        </parameters>
+      </operations>
+      <dataFields name="insuranceQuoteRequestEventQueue" qualifiedName="customerSelfService.PolicyManagementMessageProducer.insuranceQuoteRequestEventQueue" hidden="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Value" qualifiedName="javaWithSpring.Value" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="value" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="${insuranceQuoteRequestEvent.queueName}" property="//@contexts.0/@complexTypes.33/@dataFields.0/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="customerDecisionEventQueue" qualifiedName="customerSelfService.PolicyManagementMessageProducer.customerDecisionEventQueue" hidden="true">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Value" qualifiedName="javaWithSpring.Value" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="value" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="${customerDecisionEvent.queueName}" property="//@contexts.0/@complexTypes.33/@dataFields.1/@aspects.0/@properties.0"/>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="CustomerInfoDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.CustomerInfoDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoDto"/>
+        </returnType>
+        <parameters name="customerInfo" qualifiedName="customerSelfService.CustomerInfoDto.fromDomainObject.customerInfo">
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.34/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.34/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <operations name="toDomainObject" qualifiedName="customerSelfService.CustomerInfoDto.toDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.34/@operations.1/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="customerinfos" property="//@contexts.0/@complexTypes.34/@operations.1/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+      </operations>
+      <dataFields name="customerId" qualifiedName="customerSelfService.CustomerInfoDto.customerId">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="firstname" qualifiedName="customerSelfService.CustomerInfoDto.firstname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="lastname" qualifiedName="customerSelfService.CustomerInfoDto.lastname">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="contactAddress" qualifiedName="customerSelfService.CustomerInfoDto.contactAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="billingAddress" qualifiedName="customerSelfService.CustomerInfoDto.billingAddress">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceOptionsDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.InsuranceOptionsDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsDto"/>
+        </returnType>
+        <parameters name="insuranceOptions" qualifiedName="customerSelfService.InsuranceOptionsDto.fromDomainObject.insuranceOptions">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.35/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.35/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <operations name="toDomainObject" qualifiedName="customerSelfService.InsuranceOptionsDto.toDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.35/@operations.1/@returnType/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insuranceoptions" property="//@contexts.0/@complexTypes.35/@operations.1/@returnType/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </returnType>
+      </operations>
+      <dataFields name="startDate" qualifiedName="customerSelfService.InsuranceOptionsDto.startDate">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="JsonFormat" qualifiedName="javaWithSpring.JsonFormat" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="pattern" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="yyyy-MM-dd" property="//@contexts.0/@complexTypes.35/@dataFields.0/@aspects.0/@properties.0"/>
+        </aspects>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="insuranceType" qualifiedName="customerSelfService.InsuranceOptionsDto.insuranceType">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="deductible" qualifiedName="customerSelfService.InsuranceOptionsDto.deductible">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.InsuranceQuoteDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteDto"/>
+        </returnType>
+        <parameters name="insuranceQuote" qualifiedName="customerSelfService.InsuranceQuoteDto.fromDomainObject.insuranceQuote">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.36/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteEntity" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteEntity">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequotes" property="//@contexts.0/@complexTypes.36/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <dataFields name="expirationDate" qualifiedName="customerSelfService.InsuranceQuoteDto.expirationDate">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="insurancePremium" qualifiedName="customerSelfService.InsuranceQuoteDto.insurancePremium">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="policyLimit" qualifiedName="customerSelfService.InsuranceQuoteDto.policyLimit">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+        </returnType>
+        <parameters name="insuranceQuoteRequest" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.fromDomainObject.insuranceQuoteRequest">
+          <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequoterequests" property="//@contexts.0/@complexTypes.37/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="insurancequoterequests" property="//@contexts.0/@complexTypes.37/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <dataFields name="id" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.id">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+      </dataFields>
+      <dataFields name="date" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.date">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="statusHistory" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.statusHistory">
+        <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChangeDtos"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChangeDtos"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="customerInfo" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.customerInfo">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerInfoDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerInfoDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="insuranceOptions" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.insuranceOptions">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceOptionsDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceOptionsDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="insuranceQuote" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.insuranceQuote">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="policyId" qualifiedName="customerSelfService.InsuranceQuoteRequestDto.policyId">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="InsuranceQuoteResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteResponseDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <dataFields name="status" qualifiedName="customerSelfService.InsuranceQuoteResponseDto.status">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+      <dataFields name="expirationDate" qualifiedName="customerSelfService.InsuranceQuoteResponseDto.expirationDate">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="insurancePremium" qualifiedName="customerSelfService.InsuranceQuoteResponseDto.insurancePremium">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="policyLimit" qualifiedName="customerSelfService.InsuranceQuoteResponseDto.policyLimit">
+        <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.MoneyAmountDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmountDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmountDto"/>
+        </returnType>
+        <parameters name="moneyAmount" qualifiedName="customerSelfService.MoneyAmountDto.fromDomainObject.moneyAmount">
+          <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <operations name="toDomainObject" qualifiedName="customerSelfService.MoneyAmountDto.toDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="MoneyAmount" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.MoneyAmount"/>
+        </returnType>
+      </operations>
+      <dataFields name="amount" qualifiedName="customerSelfService.MoneyAmountDto.amount">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="BigDecimal" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.BigDecimal" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="double" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+        <aspects name="DecimalMax" qualifiedName="javaWithSpring.DecimalMax" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="value" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <properties name="inclusive" type="boolean" defaultValue="false"/>
+          <propertyValues value="1000000000000" property="//@contexts.0/@complexTypes.39/@dataFields.0/@aspects.0/@properties.0"/>
+          <propertyValues value="false" property="//@contexts.0/@complexTypes.39/@dataFields.0/@aspects.0/@properties.1"/>
+        </aspects>
+        <aspects name="DecimalMin" qualifiedName="javaWithSpring.DecimalMin" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+          <properties name="value" type="string">
+            <featureNames>MANDATORY</featureNames>
+          </properties>
+          <propertyValues value="0" property="//@contexts.0/@complexTypes.39/@dataFields.0/@aspects.1/@properties.0"/>
+        </aspects>
+      </dataFields>
+      <dataFields name="currency" qualifiedName="customerSelfService.MoneyAmountDto.currency">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateDataStructure" name="RequestStatusChangeDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChangeDto">
+      <featureNames>VALUE_OBJECT</featureNames>
+      <operations name="fromDomainObject" qualifiedName="customerSelfService.RequestStatusChangeDto.fromDomainObject">
+        <returnType>
+          <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChangeDto"/>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChangeDto"/>
+        </returnType>
+        <parameters name="requestStatusChange" qualifiedName="customerSelfService.RequestStatusChangeDto.fromDomainObject.requestStatusChange">
+          <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChange" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChange">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="requeststatuschanges" property="//@contexts.0/@complexTypes.40/@operations.0/@parameters.0/@type/@aspects.0/@properties.0"/>
+            </aspects>
+          </type>
+          <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChange" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChange">
+            <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+              <featureNames>SINGLE_VALUED</featureNames>
+              <properties name="name" type="string"/>
+              <propertyValues value="requeststatuschanges" property="//@contexts.0/@complexTypes.40/@operations.0/@parameters.0/@originalType/@aspects.0/@properties.0"/>
+            </aspects>
+          </originalType>
+        </parameters>
+        <aspects name="static" qualifiedName="javaWithSpring.static" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </operations>
+      <dataFields name="date" qualifiedName="customerSelfService.RequestStatusChangeDto.date">
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+      </dataFields>
+      <dataFields name="status" qualifiedName="customerSelfService.RequestStatusChangeDto.status">
+        <featureNames>NEVER_EMPTY</featureNames>
+        <type xsi:type="intermediate:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="AddressDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.AddressDtos" structuredList="true">
+      <dataFields name="d" qualifiedName="customerSelfService.AddressDtos.d">
+        <type xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.AddressDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="CustomerDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.CustomerDtos" structuredList="true">
+      <dataFields name="c" qualifiedName="customerSelfService.CustomerDtos.c">
+        <type xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.CustomerDto">
+          <aspects name="ResourceSupport" qualifiedName="javaWithSpring.ResourceSupport" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Authorities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.Authorities" structuredList="true">
+      <dataFields name="authority" qualifiedName="customerSelfService.Authorities.authority">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="UserDetails" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.UserDetails" structuredList="true">
+      <dataFields name="username" qualifiedName="customerSelfService.UserDetails.username">
+        <type xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        <originalType xsi:type="intermediate:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="Cities" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.Cities" primitiveList="true">
+      <primitiveType name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="RequestStatusChanges" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChanges" structuredList="true">
+      <dataFields name="c" qualifiedName="customerSelfService.RequestStatusChanges.c">
+        <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChange" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChange"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChange" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChange">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="requeststatuschanges" property="//@contexts.0/@complexTypes.46/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="InsuranceQuoteRequestAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots" structuredList="true">
+      <dataFields name="r" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoots.r">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestAggregateRoot">
+          <aspects name="Table" qualifiedName="javaWithSpring.Table" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="name" type="string"/>
+            <propertyValues value="insurancequoterequests" property="//@contexts.0/@complexTypes.47/@dataFields.0/@originalType/@aspects.0/@properties.0"/>
+          </aspects>
+        </originalType>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="InsuranceQuoteRequestDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.InsuranceQuoteRequestDtos" structuredList="true">
+      <dataFields name="r" qualifiedName="customerSelfService.InsuranceQuoteRequestDtos.r">
+        <type xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.InsuranceQuoteRequestDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateListType" name="RequestStatusChangeDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerSelfService.RequestStatusChangeDtos" structuredList="true">
+      <dataFields name="c" qualifiedName="customerSelfService.RequestStatusChangeDtos.c">
+        <type xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChangeDto"/>
+        <originalType xsi:type="intermediate:IntermediateComplexType" name="RequestStatusChangeDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerSelfService.RequestStatusChangeDto"/>
+      </dataFields>
+    </complexTypes>
+    <complexTypes xsi:type="intermediate:IntermediateEnumeration" name="RequestStatus" origin="DATA_MODEL" kind="ENUMERATION" qualifiedName="customerSelfService.RequestStatus">
+      <aspects name="EnumerationMethod" qualifiedName="javaWithSpring.EnumerationMethod" import="//@imports.0">
+        <properties name="javaCode" type="string">
+          <featureNames>MANDATORY</featureNames>
+        </properties>
+        <propertyValues value="public boolean canTransitionTo(RequestStatus newStatus)" property="//@contexts.0/@complexTypes.50/@aspects.0/@properties.0"/>
+      </aspects>
+      <featureNames>VALUE_OBJECT</featureNames>
+      <fields name="REQUEST_SUBMITTED" qualifiedName="customerSelfService.RequestStatus.REQUEST_SUBMITTED"/>
+      <fields name="REQUEST_REJECTED" qualifiedName="customerSelfService.RequestStatus.REQUEST_REJECTED"/>
+      <fields name="QUOTE_RECEIVED" qualifiedName="customerSelfService.RequestStatus.QUOTE_RECEIVED"/>
+      <fields name="QUOTE_ACCEPTED" qualifiedName="customerSelfService.RequestStatus.QUOTE_ACCEPTED"/>
+      <fields name="QUOTE_REJECTED" qualifiedName="customerSelfService.RequestStatus.QUOTE_REJECTED"/>
+      <fields name="QUOTE_EXPIRED" qualifiedName="customerSelfService.RequestStatus.QUOTE_EXPIRED"/>
+      <fields name="POLICY_CREATED" qualifiedName="customerSelfService.RequestStatus.POLICY_CREATED"/>
+    </complexTypes>
+  </contexts>
+</intermediate:IntermediateDataModel>

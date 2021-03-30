@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: policymanagementcontainer
+  name: policymanagementcontainer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: policymanagementcontainer
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: policymanagementcontainer
+    spec:
+      containers:
+      - image: policymanagementcontainer
+        imagePullPolicy: "Never"
+        name: policymanagementcontainer
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: policymanagementcontainer
+  name: policymanagementcontainer
+spec:
+  ports:
+  - name: "8090"
+    port: 8090
+    targetPort: 8090
+  selector:
+    app: policymanagementcontainer
+  type: ClusterIP
+status:
+  loadBalancer: {}

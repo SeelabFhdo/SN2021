@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="">
+  <imports name="customerCoreServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/service models/customerCore.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="java" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eadr" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eadr.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="lakesideMutual" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/lakesideMutual.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="map" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/map.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eureka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="domain" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/mapping models/customerCore/domain_customerCore.xmi" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.services" name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+    <technologies name="map" import="//@imports.4"/>
+    <technologies name="java" import="//@imports.1"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+    <interfaces name="cityStaticDataHolder" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+        <addresses>/cities</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="getCitiesForPostalCode" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode" visibility="PUBLIC">
+        <apiOperationComment comment="Get the cities for a particular postal code.">
+          <parameterComments comment="the postal code" required="true" parameter="//@microservices.0/@interfaces.0/@operations.0/@parameters.0"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+          <addresses>/{postalCode}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="postalCode" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode.postalCode" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="cities" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode.cities" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CitiesResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CitiesResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <aspects name="StaticDataHolder" qualifiedName="map.StaticDataHolder" import="//@imports.4">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="customerInformationHolder" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+        <addresses>/customers</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="changeAddress" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress" visibility="PUBLIC">
+        <apiOperationComment comment="Change a customer's address.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.0"/>
+          <parameterComments comment="the customer's new address" required="true" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+          <addresses>/{customerId}/address</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PutMapping" qualifiedName="javaWithSpring.PutMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.changeAddress.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.1/@operations.0/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getIncludedFields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getIncludedFields.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Set" origin="TECHNOLOGY" kind="LIST" qualifiedName="javaWithSpring._types.Set" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.customer" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.6"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomerResponseDto.customerResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="size" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.size" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerDtos" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.customerDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.6"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createPaginatedCustomerResponseDto.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Get a specific set of customers.">
+          <parameterComments comment="a comma-separated list of customer ids" required="true" parameter="//@microservices.0/@interfaces.1/@operations.4/@parameters.0"/>
+          <parameterComments comment="a comma-separated list of the fields that should be included in the response" parameter="//@microservices.0/@interfaces.1/@operations.4/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+          <addresses>/{ids}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="RequestBundle" qualifiedName="map.RequestBundle" import="//@imports.4">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="WishList" qualifiedName="map.WishList" import="//@imports.4">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="ids" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.ids" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.fields" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="fields" property="//@microservices.0/@interfaces.1/@operations.4/@parameters.1/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Update the profile of the customer with the given customer id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.5/@parameters.0"/>
+          <parameterComments comment="the customer's updated profile" required="true" parameter="//@microservices.0/@interfaces.1/@operations.5/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.1">
+          <addresses>/{customerId}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PutMapping" qualifiedName="javaWithSpring.PutMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="customerToUpdateNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.updateCustomer.customerToUpdateNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.1/@operations.5/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers" visibility="PUBLIC">
+        <apiOperationComment comment="Get all customers in pages of 10 entries per page.">
+          <parameterComments comment="search terms to filter the customers by name" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.0"/>
+          <parameterComments comment="the maximum number of customers per page" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.1"/>
+          <parameterComments comment="the offset of the page's first customer" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.2"/>
+          <parameterComments comment="a comma-separated list of the fields that should be included in the response" parameter="//@microservices.0/@interfaces.1/@operations.6/@parameters.3"/>
+        </apiOperationComment>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <aspects name="Pagination" qualifiedName="map.Pagination" import="//@imports.4">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="filter" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="limit" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.1/@aspects.0/@properties.0"/>
+            <propertyValues value="10" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.1/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="offset" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.2/@aspects.0/@properties.0"/>
+            <propertyValues value="0" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.2/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.fields" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="fields" property="//@microservices.0/@interfaces.1/@operations.6/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.getCustomers.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer" visibility="PUBLIC">
+        <apiOperationComment comment="Create a new customer.">
+          <parameterComments comment="the customer's profile information" required="true" parameter="//@microservices.0/@interfaces.1/@operations.7/@parameters.0"/>
+        </apiOperationComment>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="javaWithSpring.PostMapping" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="customersResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolder.createCustomer.customersResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <aspects name="InformationHolderResource" qualifiedName="map.InformationHolderResource" import="//@imports.4">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <aspects name="MasterDataHolder" qualifiedName="map.MasterDataHolder" import="//@imports.4">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="customerInformationHolderSOAPAdapter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter" visibility="PUBLIC" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml" technology="//@microservices.0/@technologies.1">
+        <addresses>http://lm.com/ccore</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="changeAddress" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress" visibility="PUBLIC">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="AddressDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.AddressDto" import="//@imports.6"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.changeAddress.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getIncludedFields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getIncludedFields.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Set" origin="TECHNOLOGY" kind="LIST" qualifiedName="javaWithSpring._types.Set" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="FieldNames" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.FieldNames" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="customer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.customer" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerAggregateRoot" import="//@imports.6"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomerResponseDto.customerResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="size" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.size" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="customerDtos" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.customerDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerCore.CustomerResponseDtos" import="//@imports.6"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createPaginatedCustomerResponseDto.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomer" visibility="PUBLIC">
+        <endpoints communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml" technology="//@microservices.0/@technologies.1">
+          <addresses>http://lm.com/ccore/getCustomerRequest</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="ResponsePayload" qualifiedName="javaWithSpring.ResponsePayload" import="//@imports.1">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="request" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomer.request" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerRequest" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="GetCustomerRequest" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.GetCustomerRequest" import="//@imports.6"/>
+          <aspects name="RequestPayload" qualifiedName="javaWithSpring.RequestPayload" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="updateCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer" visibility="PUBLIC">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="customerId" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.customerId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerId" import="//@imports.6"/>
+        </parameters>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.updateCustomer.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers" visibility="PUBLIC">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="fields" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.fields" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.1"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.getCustomers.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.PaginatedCustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <operations name="createCustomer" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer" visibility="PUBLIC">
+        <protocols communicationType="SYNCHRONOUS" protocol="soap" dataFormat="application/xml"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="requestDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer.requestDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerProfileUpdateRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerProfileUpdateRequestDto" import="//@imports.6"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.1">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="responseDto" qualifiedName="com.lakesidemutual.customercore.CustomerCore.customerInformationHolderSOAPAdapter.createCustomer.responseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="customerCore.CustomerResponseDto" import="//@imports.6"/>
+        </parameters>
+      </operations>
+      <aspects name="InformationHolderResource" qualifiedName="map.InformationHolderResource" import="//@imports.4">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <aspects name="MasterDataHolder" qualifiedName="map.MasterDataHolder" import="//@imports.4">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <aspects name="ApplicationName" qualifiedName="javaWithSpring.ApplicationName" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="customer-core" property="//@microservices.0/@aspects.0/@properties.0"/>
+    </aspects>
+    <aspects name="JacksonConfiguration" qualifiedName="javaWithSpring.JacksonConfiguration" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="INDENT_OUTPUT" type="boolean"/>
+      <properties name="defaultPropertyInclusion" type="string"/>
+      <propertyValues value="true" property="//@microservices.0/@aspects.1/@properties.0"/>
+      <propertyValues value="NON_NULL" property="//@microservices.0/@aspects.1/@properties.1"/>
+    </aspects>
+    <aspects name="DatasourceConfiguration" qualifiedName="javaWithSpring.DatasourceConfiguration" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="url" type="string"/>
+      <properties name="username" type="string"/>
+      <properties name="password" type="string"/>
+      <properties name="driverClassName" type="string"/>
+      <propertyValues value="jdbc:h2:file:./customercore" property="//@microservices.0/@aspects.2/@properties.0"/>
+      <propertyValues value="sa" property="//@microservices.0/@aspects.2/@properties.1"/>
+      <propertyValues value="sa" property="//@microservices.0/@aspects.2/@properties.2"/>
+      <propertyValues value="org.h2.Driver" property="//@microservices.0/@aspects.2/@properties.3"/>
+    </aspects>
+    <aspects name="HibernateConfiguration" qualifiedName="javaWithSpring.HibernateConfiguration" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="ddlAuto" type="string"/>
+      <propertyValues value="create-drop" property="//@microservices.0/@aspects.3/@properties.0"/>
+    </aspects>
+    <aspects name="Port" qualifiedName="javaWithSpring.Port" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="portNumber" type="int">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="8110" property="//@microservices.0/@aspects.4/@properties.0"/>
+    </aspects>
+    <aspects name="Management" qualifiedName="javaWithSpring.Management" import="//@imports.1">
+      <properties name="property" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="endpoints.web.exposure.include" property="//@microservices.0/@aspects.5/@properties.0"/>
+      <propertyValues value="*" property="//@microservices.0/@aspects.5/@properties.1"/>
+    </aspects>
+    <aspects name="Management" qualifiedName="javaWithSpring.Management" import="//@imports.1">
+      <properties name="property" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="info.git.mode" property="//@microservices.0/@aspects.6/@properties.0"/>
+      <propertyValues value="full" property="//@microservices.0/@aspects.6/@properties.1"/>
+    </aspects>
+    <aspects name="AllowBeanDefinitionOverriding" qualifiedName="javaWithSpring.AllowBeanDefinitionOverriding" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="value" type="boolean" defaultValue="true"/>
+    </aspects>
+    <aspects name="CommonsRequestLoggingFilter" qualifiedName="javaWithSpring.CommonsRequestLoggingFilter" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="DEBUG" property="//@microservices.0/@aspects.8/@properties.0"/>
+    </aspects>
+    <aspects name="AdminClientUrl" qualifiedName="javaWithSpring.AdminClientUrl" import="//@imports.1">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="url" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="http://localhost:9000" property="//@microservices.0/@aspects.9/@properties.0"/>
+    </aspects>
+  </microservices>
+</intermediate:IntermediateServiceModel>

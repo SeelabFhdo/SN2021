@@ -54,3 +54,9 @@ mkdir $GENERATED_ARTIFACTS
 ####################################################################################################
 # System Visualizer
 ####################################################################################################
+
+java -jar de.fhdo.lemma.visualizer-0.8.0-SNAPSHOT-standalone.jar \
+-s="$PWD/case_study_models/customer-core/customerCore.services" \
+-i="$PWD/case_study_models/intermediate/service models/customerCore.xmi" \
+-t="$PWD/$GENERATED_ARTIFACTS/visualization" \
+code_generation ServicesToGraphVizGenerator -height=1000 -lvl=INTERFACES -aim="$PWD/case_study_models/intermediate/service models"  "customerManagementBackend.xmi" "customerSelfServiceBackend.xmi" "policyManagementBackend.xmi"

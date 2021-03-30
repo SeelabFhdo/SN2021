@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="">
+  <imports name="java" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eadr" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eadr.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="map" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/map.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eureka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="policyManagementBackendServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/service models/policyManagementBackend.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="policyManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/mapping models/policyManagementBackend/policyManagementBackend_policyManagementBackend.xmi" importTypeName="DATATYPES"/>
+  <imports name="customerCoreServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/customer-core/customerCore.services" importTypeName="MICROSERVICES"/>
+  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/policy-management-backend/policyManagementBackend.services" name="com.lakesidemutual.policymanagement.PolicyManagementBackend" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend" type="FUNCTIONAL" visibility="ARCHITECTURE" effectivelyImplemented="true">
+    <technologies name="java" import="//@imports.0"/>
+    <technologies name="map" import="//@imports.2"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+    <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+    <requiredMicroservices name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" imported="true" import="//@imports.6"/>
+    <interfaces name="customerInformationHolder" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/customers</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="getCustomers" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get all customers">
+          <parameterComments comment="search terms to filter the customers by name" parameter="//@microservices.0/@interfaces.0/@operations.0/@parameters.0"/>
+          <parameterComments comment="the maximum number of customers per page" parameter="//@microservices.0/@interfaces.0/@operations.0/@parameters.1"/>
+          <parameterComments comment="the offset of the page's first customer" parameter="//@microservices.0/@interfaces.0/@operations.0/@parameters.2"/>
+        </apiOperationComment>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers.filter" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="filter" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.0/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="limit" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.1/@aspects.0/@properties.0"/>
+            <propertyValues value="10" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.1/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="offset" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.2/@aspects.0/@properties.0"/>
+            <propertyValues value="0" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.2/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="paginatedResponseOut" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers.paginatedResponseOut" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedCustomerResponseDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomers.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.0/@operations.0/@parameters.4/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="filter" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.filter" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="size" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.size" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="customerDtos" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.customerDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.CustomerDtos" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.CustomerDtos" import="//@imports.5"/>
+        </parameters>
+        <parameters name="paginatedCustomerResponseDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPaginatedCustomerResponseDto.paginatedCustomerResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedCustomerResponseDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedCustomerResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedCustomerResponseDto" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="addCustomerLinks" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.addCustomerLinks" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="customerDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.addCustomerLinks.customerDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDto" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="getCustomer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get customer with a given customer id.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.0/@operations.3/@parameters.0"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{customerIdDto}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="customerIdDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer.customerIdDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerIdDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerIdDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerIdDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerIdDto" import="//@imports.5"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="customer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer.customer" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerNotFound" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer.customerNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.0/@operations.3/@parameters.2/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getCustomer.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.0/@operations.3/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="getPolicies" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getPolicies" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get a customer's policies.">
+          <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.0/@operations.4/@parameters.0"/>
+          <parameterComments comment="a comma-separated list of the fields that should be expanded in the response" parameter="//@microservices.0/@interfaces.0/@operations.4/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{customerIdDto}/policies</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="customerIdDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getPolicies.customerIdDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerIdDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerIdDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerIdDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerIdDto" import="//@imports.5"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getPolicies.expand" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="expand" property="//@microservices.0/@interfaces.0/@operations.4/@parameters.1/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="policyDtos" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.getPolicies.policyDtos" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntities" origin="TECHNOLOGY" kind="LIST" qualifiedName="javaWithSpring._types.ResponseEntities" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyDtos" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="createPolicyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="policy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto.policy" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyAggregateRoot" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyAggregateRoot" import="//@imports.5"/>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto.expand" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="policyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto.policyDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerInformationHolder.createPolicyDto.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.0/@operations.5/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <aspects name="InformationHolderResource" qualifiedName="map.InformationHolderResource" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <aspects name="MasterDataHolder" qualifiedName="map.MasterDataHolder" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="insuranceQuoteRequestInformationHolder" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/insurance-quote-requests</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="getInsuranceQuoteRequests" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequests" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get all Insurance Quote Requests."/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="quoteRequestDtos" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequests.quoteRequestDtos" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntities" origin="TECHNOLOGY" kind="LIST" qualifiedName="javaWithSpring._types.ResponseEntities" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteRequestDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.InsuranceQuoteRequestDtos" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="getInsuranceQuoteRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequest" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get a specific Insurance Quote Request.">
+          <parameterComments comment="the insurance quote request's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.1/@parameters.0"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{id}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="id" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequest.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="insuranceQuoteRequestDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequest.insuranceQuoteRequestDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteRequestDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="insuranceQuoteRequestNotFound" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.getInsuranceQuoteRequest.insuranceQuoteRequestNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.1/@operations.1/@parameters.2/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="respondToInsuranceQuoteRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Updates the status of an existing Insurance Quote Request.">
+          <parameterComments comment="the insurance quote request's unique id" required="true" parameter="//@microservices.0/@interfaces.1/@operations.2/@parameters.0"/>
+          <parameterComments comment="the response that contains a new insurance quote if the request has been accepted" required="true" parameter="//@microservices.0/@interfaces.1/@operations.2/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{id}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PatchMapping" qualifiedName="javaWithSpring.PatchMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="id" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest.id" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Long" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Long" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="long" origin="BUILTIN" kind="PRIMITIVE" size="64"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="insuranceQuoteResponseDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest.insuranceQuoteResponseDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteResponseDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteResponseDto" import="//@imports.5"/>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteRequestDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="insuranceQuoteRequestNotFound" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest.insuranceQuoteRequestNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.1/@operations.2/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="event" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestInformationHolder.respondToInsuranceQuoteRequest.event" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteResponseEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteResponseEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteResponseEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteResponseEvent" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <aspects name="InformationHolderResource" qualifiedName="map.InformationHolderResource" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <aspects name="MasterDataHolder" qualifiedName="map.MasterDataHolder" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="insuranceQuoteRequestMessageConsumer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestMessageConsumer" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="receiveInsuranceQuoteRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestMessageConsumer.receiveInsuranceQuoteRequest" visibility="ARCHITECTURE">
+        <endpoints communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>insurance-quote-request-event-queue</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="message" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.insuranceQuoteRequestMessageConsumer.receiveInsuranceQuoteRequest.message" exchangePattern="IN" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Message" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.Message" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteRequestEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteRequestEvent" import="//@imports.5"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <interfaces name="policyInformationHolder" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/policies</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="createPolicy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Create a new policy.">
+          <parameterComments comment="the policy that is to be added" required="true" parameter="//@microservices.0/@interfaces.3/@operations.0/@parameters.0"/>
+        </apiOperationComment>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="javaWithSpring.PostMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="createPolicyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.createPolicyDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CreatePolicyRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CreatePolicyRequestDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CreatePolicyRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CreatePolicyRequestDto" import="//@imports.5"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="request" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.request" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="HttpServletRequest" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.HttpServletRequest" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="policyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.policyDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="unknownCustomer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.unknownCustomer" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="FAILED_DEPENDENCY" property="//@microservices.0/@interfaces.3/@operations.0/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="updatePolicyEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.updatePolicyEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicy.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.3/@operations.0/@parameters.5/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="updatePolicy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Update an existing policy.">
+          <parameterComments comment="the policy's unique id" required="true" parameter="//@microservices.0/@interfaces.3/@operations.1/@parameters.0"/>
+          <parameterComments comment="the updated policy" required="true" parameter="//@microservices.0/@interfaces.3/@operations.1/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{policyId}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PutMapping" qualifiedName="javaWithSpring.PutMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="policyId" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.policyId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="createPolicyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.createPolicyDto" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CreatePolicyRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CreatePolicyRequestDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CreatePolicyRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CreatePolicyRequestDto" import="//@imports.5"/>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="request" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.request" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="HttpServletRequest" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.HttpServletRequest" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="policyDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.policyDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="policyNotFound" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.policyNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.3/@operations.1/@parameters.4/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="unknownCustomer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.unknownCustomer" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="FAILED_DEPENDENCY" property="//@microservices.0/@interfaces.3/@operations.1/@parameters.5/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="updatePolicyEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.updatePolicyEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.updatePolicy.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.3/@operations.1/@parameters.7/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="deletePolicy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.deletePolicy" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Delete an existing policy.">
+          <parameterComments comment="the policy's unique id" required="true" parameter="//@microservices.0/@interfaces.3/@operations.2/@parameters.0"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{policyId}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="DeleteMapping" qualifiedName="javaWithSpring.DeleteMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="policyId" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.deletePolicy.policyId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="request" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.deletePolicy.request" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="HttpServletRequest" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.HttpServletRequest" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.deletePolicy.result" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntityNoContent" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.ResponseEntityNoContent" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="deletePolicyEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.deletePolicy.deletePolicyEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="DeletePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.DeletePolicyEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="DeletePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.DeletePolicyEvent" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="createPolicyDtos" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="policies" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos.policies" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyAggregateRoots" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoots" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyAggregateRoots" import="//@imports.5"/>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos.expand" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="result" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos.result" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyDtos" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyDtos" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPolicyDtos.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.3/@operations.3/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="createPaginatedPolicyResponseDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.limit" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.offset" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.expand" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="szie" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.szie" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="policyDtos" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.policyDtos" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyDtos" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="policyManagement.PolicyDtos" import="//@imports.5"/>
+        </parameters>
+        <parameters name="paginatedPolicyResponseDto" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.createPaginatedPolicyResponseDto.paginatedPolicyResponseDto" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedPolicyResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedPolicyResponseDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedPolicyResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedPolicyResponseDto" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="getPolicies" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get all policies, newest first.">
+          <parameterComments comment="the maximum number of policies per page" parameter="//@microservices.0/@interfaces.3/@operations.5/@parameters.0"/>
+          <parameterComments comment="the offset of the page's first policy" parameter="//@microservices.0/@interfaces.3/@operations.5/@parameters.1"/>
+          <parameterComments comment="a comma-separated list of the fields that should be expanded in the response" parameter="//@microservices.0/@interfaces.3/@operations.5/@parameters.2"/>
+        </apiOperationComment>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="limit" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies.limit" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="limit" property="//@microservices.0/@interfaces.3/@operations.5/@parameters.0/@aspects.0/@properties.0"/>
+            <propertyValues value="10" property="//@microservices.0/@interfaces.3/@operations.5/@parameters.0/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="offset" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies.offset" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="offset" property="//@microservices.0/@interfaces.3/@operations.5/@parameters.1/@aspects.0/@properties.0"/>
+            <propertyValues value="0" property="//@microservices.0/@interfaces.3/@operations.5/@parameters.1/@aspects.0/@properties.1"/>
+          </aspects>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies.expand" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="expand" property="//@microservices.0/@interfaces.3/@operations.5/@parameters.2/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="paginatedPolicyResponse" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicies.paginatedPolicyResponse" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PaginatedPolicyResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PaginatedPolicyResponseDto" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="getPolicy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Get a single policy.">
+          <parameterComments comment="the policy's unique id" required="true" parameter="//@microservices.0/@interfaces.3/@operations.6/@parameters.0"/>
+          <parameterComments comment="a comma-separated list of the fields that should be expanded in the response" parameter="//@microservices.0/@interfaces.3/@operations.6/@parameters.1"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/{policyId}</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="policyId" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy.policyId" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyId" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyId" import="//@imports.5"/>
+          <aspects name="PathVariable" qualifiedName="javaWithSpring.PathVariable" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="expand" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy.expand" exchangePattern="IN" communicationType="SYNCHRONOUS" optional="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="RequestParam" qualifiedName="javaWithSpring.RequestParam" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="value" type="string"/>
+            <properties name="defaultValue" type="string" defaultValue=""/>
+            <propertyValues value="expand" property="//@microservices.0/@interfaces.3/@operations.6/@parameters.1/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+        <parameters name="response" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy.response" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyDto" import="//@imports.5"/>
+        </parameters>
+        <parameters name="policyNotFound" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.policyInformationHolder.getPolicy.policyNotFound" exchangePattern="OUT" communicationType="SYNCHRONOUS" communicatesFault="true">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="NOT_FOUND" property="//@microservices.0/@interfaces.3/@operations.6/@parameters.3/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <aspects name="InformationHolderResource" qualifiedName="map.InformationHolderResource" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+      <aspects name="MasterDataHolder" qualifiedName="map.MasterDataHolder" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="riskComputationService" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+        <addresses>/riskfactor</addresses>
+      </endpoints>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="computeRiskFactor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactor" visibility="ARCHITECTURE">
+        <apiOperationComment comment="Computes the risk factor for a given customer.">
+          <parameterComments comment="the request containing relevant customer attributes (e.g., postal code, birthday)" required="true" parameter="//@microservices.0/@interfaces.4/@operations.0/@parameters.0"/>
+        </apiOperationComment>
+        <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>/compute</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <aspects name="PostMapping" qualifiedName="javaWithSpring.PostMapping" import="//@imports.0">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </aspects>
+        <parameters name="riskFactorRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactor.riskFactorRequest" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="RiskFactorRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.RiskFactorRequestDto" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="RiskFactorRequestDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.RiskFactorRequestDto" import="//@imports.5"/>
+          <aspects name="Valid" qualifiedName="javaWithSpring.Valid" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+          <aspects name="RequestBody" qualifiedName="javaWithSpring.RequestBody" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+          </aspects>
+        </parameters>
+        <parameters name="riskFactorResponse" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactor.riskFactorResponse" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="ResponseEntity" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.ResponseEntity" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="RiskFactorResponseDto" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.RiskFactorResponseDto" import="//@imports.5"/>
+        </parameters>
+      </operations>
+      <operations name="getAge" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.getAge" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="birthday" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.getAge.birthday" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Date" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Date" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="date" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="age" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.getAge.age" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <operations name="computeRiskFactorInternal" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactorInternal" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="age" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactorInternal.age" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="postalCode" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactorInternal.postalCode" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="factor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeRiskFactorInternal.factor" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <operations name="computeAgeGroupRiskFactor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeAgeGroupRiskFactor" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="age" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeAgeGroupRiskFactor.age" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+        <parameters name="factor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeAgeGroupRiskFactor.factor" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <operations name="computeLocalityRiskFactor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeLocalityRiskFactor" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="postalCodeStr" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeLocalityRiskFactor.postalCodeStr" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+        </parameters>
+        <parameters name="factor" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.riskComputationService.computeLocalityRiskFactor.factor" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Integer" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.Integer" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="int" origin="BUILTIN" kind="PRIMITIVE" size="32"/>
+        </parameters>
+      </operations>
+      <aspects name="ComputationFunction" qualifiedName="map.ComputationFunction" import="//@imports.2">
+        <featureNames>SINGLE_VALUED</featureNames>
+      </aspects>
+    </interfaces>
+    <interfaces name="customerDecisionMessageConsumer" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer" visibility="ARCHITECTURE" hasImplementedOperations="true">
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+      <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <operations name="receiveCustomerDecision" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision" visibility="ARCHITECTURE">
+        <endpoints communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
+          <addresses>customer-decision-event-queue</addresses>
+        </endpoints>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="message" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision.message" exchangePattern="IN" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="Message" origin="TECHNOLOGY" kind="STRUCTURE" qualifiedName="javaWithSpring._types.Message" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDecisionEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="insuranceQuoteExpiredEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision.insuranceQuoteExpiredEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteExpiredEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteExpiredEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="InsuranceQuoteExpiredEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.InsuranceQuoteExpiredEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="policyCreatedEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision.policyCreatedEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyCreatedEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyCreatedEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyCreatedEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyCreatedEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="policyUpdatedEvent" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision.policyUpdatedEvent" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="UpdatePolicyEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.UpdatePolicyEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="customerCoreNotAvailable" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.receiveCustomerDecision.customerCoreNotAvailable" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedTechnologySpecificType" name="String" origin="TECHNOLOGY" kind="PRIMITIVE" qualifiedName="javaWithSpring._types.String" import="//@imports.0"/>
+          <originalType xsi:type="intermediate_1:IntermediatePrimitiveType" name="string" origin="BUILTIN" kind="PRIMITIVE"/>
+          <aspects name="ResponseStatus" qualifiedName="javaWithSpring.ResponseStatus" import="//@imports.0">
+            <featureNames>SINGLE_VALUED</featureNames>
+            <properties name="status" type="string">
+              <featureNames>MANDATORY</featureNames>
+            </properties>
+            <propertyValues value="BAD_GATEWAY" property="//@microservices.0/@interfaces.5/@operations.0/@parameters.4/@aspects.0/@properties.0"/>
+          </aspects>
+        </parameters>
+      </operations>
+      <operations name="createPolicyForInsuranceQuoteRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.createPolicyForInsuranceQuoteRequest" visibility="INTERNAL">
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
+        <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <parameters name="insuranceQuoteRequest" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.createPolicyForInsuranceQuoteRequest.insuranceQuoteRequest" exchangePattern="IN" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDecisionEvent" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="CustomerDecisionEvent" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.CustomerDecisionEvent" import="//@imports.5"/>
+        </parameters>
+        <parameters name="policy" qualifiedName="com.lakesidemutual.policymanagement.PolicyManagementBackend.customerDecisionMessageConsumer.createPolicyForInsuranceQuoteRequest.policy" exchangePattern="OUT" communicationType="SYNCHRONOUS">
+          <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyAggregateRoot" import="//@imports.5"/>
+          <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="PolicyAggregateRoot" origin="DATA_MODEL" kind="STRUCTURE" qualifiedName="policyManagement.PolicyAggregateRoot" import="//@imports.5"/>
+        </parameters>
+      </operations>
+    </interfaces>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="insuranceQuoteRequestEvent.queueName" property="//@microservices.0/@aspects.0/@properties.0"/>
+      <propertyValues value="insurance-quote-request-event-queue" property="//@microservices.0/@aspects.0/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="customerDecisionEvent.queueName" property="//@microservices.0/@aspects.1/@properties.0"/>
+      <propertyValues value="customer-decision-event-queue" property="//@microservices.0/@aspects.1/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="insuranceQuoteResponseEvent.queueName" property="//@microservices.0/@aspects.2/@properties.0"/>
+      <propertyValues value="insurance-quote-response-event-queue" property="//@microservices.0/@aspects.2/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="insuranceQuoteExpiredEvent.queueName" property="//@microservices.0/@aspects.3/@properties.0"/>
+      <propertyValues value="insurance-quote-expired-event-queue" property="//@microservices.0/@aspects.3/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="policyCreatedEvent.queueName" property="//@microservices.0/@aspects.4/@properties.0"/>
+      <propertyValues value="policy-created-event-queue" property="//@microservices.0/@aspects.4/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="riskmanagement.queueName" property="//@microservices.0/@aspects.5/@properties.0"/>
+      <propertyValues value="newpolicies" property="//@microservices.0/@aspects.5/@properties.1"/>
+    </aspects>
+    <aspects name="ActiveMqConfiguration" qualifiedName="javaWithSpring.ActiveMqConfiguration" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="user" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="password" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="queueuser" property="//@microservices.0/@aspects.6/@properties.0"/>
+      <propertyValues value="secret" property="//@microservices.0/@aspects.6/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="policymanagement.stompBrokerBindAddress" property="//@microservices.0/@aspects.7/@properties.0"/>
+      <propertyValues value="stomp://0.0.0.0:61613" property="//@microservices.0/@aspects.7/@properties.1"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="policymanagement.tcpBrokerBindAddress" property="//@microservices.0/@aspects.8/@properties.0"/>
+      <propertyValues value="tcp://0.0.0.0:61616" property="//@microservices.0/@aspects.8/@properties.1"/>
+    </aspects>
+    <aspects name="ApplicationName" qualifiedName="javaWithSpring.ApplicationName" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="policy-management-backend" property="//@microservices.0/@aspects.9/@properties.0"/>
+    </aspects>
+    <aspects name="JacksonConfiguration" qualifiedName="javaWithSpring.JacksonConfiguration" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="INDENT_OUTPUT" type="boolean"/>
+      <properties name="defaultPropertyInclusion" type="string"/>
+      <propertyValues value="true" property="//@microservices.0/@aspects.10/@properties.0"/>
+      <propertyValues value="NON_NULL" property="//@microservices.0/@aspects.10/@properties.1"/>
+    </aspects>
+    <aspects name="DatasourceConfiguration" qualifiedName="javaWithSpring.DatasourceConfiguration" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="url" type="string"/>
+      <properties name="username" type="string"/>
+      <properties name="password" type="string"/>
+      <properties name="driverClassName" type="string"/>
+      <propertyValues value="jdbc:h2:file:./policymanagement" property="//@microservices.0/@aspects.11/@properties.0"/>
+      <propertyValues value="sa" property="//@microservices.0/@aspects.11/@properties.1"/>
+      <propertyValues value="sa" property="//@microservices.0/@aspects.11/@properties.2"/>
+      <propertyValues value="org.h2.Driver" property="//@microservices.0/@aspects.11/@properties.3"/>
+    </aspects>
+    <aspects name="HibernateConfiguration" qualifiedName="javaWithSpring.HibernateConfiguration" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="ddlAuto" type="string"/>
+      <propertyValues value="create-drop" property="//@microservices.0/@aspects.12/@properties.0"/>
+    </aspects>
+    <aspects name="Port" qualifiedName="javaWithSpring.Port" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="portNumber" type="int">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="8090" property="//@microservices.0/@aspects.13/@properties.0"/>
+    </aspects>
+    <aspects name="CustomProperty" qualifiedName="javaWithSpring.CustomProperty" import="//@imports.0">
+      <properties name="name" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="customercore.baseURL" property="//@microservices.0/@aspects.14/@properties.0"/>
+      <propertyValues value="http://customer-core" property="//@microservices.0/@aspects.14/@properties.1"/>
+    </aspects>
+    <aspects name="Management" qualifiedName="javaWithSpring.Management" import="//@imports.0">
+      <properties name="property" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="endpoints.web.exposure.include" property="//@microservices.0/@aspects.15/@properties.0"/>
+      <propertyValues value="*" property="//@microservices.0/@aspects.15/@properties.1"/>
+    </aspects>
+    <aspects name="Management" qualifiedName="javaWithSpring.Management" import="//@imports.0">
+      <properties name="property" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <properties name="value" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="info.git.mode" property="//@microservices.0/@aspects.16/@properties.0"/>
+      <propertyValues value="full" property="//@microservices.0/@aspects.16/@properties.1"/>
+    </aspects>
+    <aspects name="AdminClientUrl" qualifiedName="javaWithSpring.AdminClientUrl" import="//@imports.0">
+      <featureNames>SINGLE_VALUED</featureNames>
+      <properties name="url" type="string">
+        <featureNames>MANDATORY</featureNames>
+      </properties>
+      <propertyValues value="http://localhost:9000" property="//@microservices.0/@aspects.17/@properties.0"/>
+    </aspects>
+  </microservices>
+</intermediate:IntermediateServiceModel>
