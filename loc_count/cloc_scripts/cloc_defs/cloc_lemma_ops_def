@@ -1,0 +1,4 @@
+LEMMA
+    filter call_regexp_common C++
+    extension operation
+    3rd_gen_scale 5.00

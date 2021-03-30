@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cloc --by-file "../../generated_deployments_specification/"
+cloc --by-file "../../pregenerated_deployment_specification_artifacts/"
