@@ -10,7 +10,15 @@ LOC_SCRIPTS = {
     'locGenModelsCustomerCore': 'cloc_scripts/loc_genmodels_customer_core.sh',
     'locGenModelsCustomerManagement':
         'cloc_scripts/loc_genmodels_customer_management.sh',
-    'locManModelsLm': 'cloc_scripts/loc_manmodels_lm.sh'
+    'locManModelsLm': 'cloc_scripts/loc_manmodels_lm.sh',
+    'locManModelsCustomerCore': 
+        'cloc_scripts/loc_manmodels_customer_core_all.sh',
+    'locManModelsCustomerManagement': 
+        'cloc_scripts/loc_manmodels_customer_management_all.sh',
+    'locManModelsCustomerCoreOperation': 
+        'cloc_scripts/loc_manmodels_customer_core_operation.sh',
+    'locManModelsCustomerManagementOperation': 
+        'cloc_scripts/loc_manmodels_customer_management_operation.sh'
 }
 
 LOC_BY_LANGS_SCRIPTS = {

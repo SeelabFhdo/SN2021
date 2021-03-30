@@ -10,7 +10,7 @@ fi
 
 SCRIPT_PATH="scripts/run_model_processor.py"
 CONTAINER_BASE_PATH="code generators/de.fhdo.lemma.model_processing.code_generation.container_base/docker/execution.yaml"
-GENERATED_ARTIFACTS="generated_artifacts"
+GENERATED_ARTIFACTS="generated_model_processing_sartifacts"
 
 mkdir $GENERATED_ARTIFACTS
 
@@ -23,32 +23,32 @@ mkdir $GENERATED_ARTIFACTS
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "case_study_models/customer-core/customerCore.operation" \
-         -i "case_study_models/intermediate/operation models/customerCore.xmi" \
+         -s "case_study_lemma_models/customer-core/customerCore.operation" \
+         -i "case_study_lemma_models/intermediate/operation models/customerCore.xmi" \
     -t "$PWD/$GENERATED_ARTIFACTS"
 
 # Container Base Generator - Customer Management Backend    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "case_study_models/customer-management-backend/customerManagementBackend.operation" \
-         -i "case_study_models/intermediate/operation models/customerManagementBackend.xmi" \
+         -s "case_study_lemma_models/customer-management-backend/customerManagementBackend.operation" \
+         -i "case_study_lemma_models/intermediate/operation models/customerManagementBackend.xmi" \
     -t "$PWD/$GENERATED_ARTIFACTS"
 
 # Container Base Generator - Self Service    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "case_study_models/customer-self-service-backend/customerSelfServiceBackend.operation" \
-         -i "case_study_models/intermediate/operation models/customerSelfServiceBackend.xmi" \
+         -s "case_study_lemma_models/customer-self-service-backend/customerSelfServiceBackend.operation" \
+         -i "case_study_lemma_models/intermediate/operation models/customerSelfServiceBackend.xmi" \
     -t "$PWD/$GENERATED_ARTIFACTS"
     
 # Container Base Generator - Policy Management    
 "$LEMMA_PATH/$SCRIPT_PATH" \
     "$LEMMA_PATH/$CONTAINER_BASE_PATH" \
     -b "$PWD" \
-         -s "case_study_models/policy-management-backend/policyManagementBackend.operation" \
-         -i "case_study_models/intermediate/operation models/policyManagementBackend.xmi" \
+         -s "case_study_lemma_models/policy-management-backend/policyManagementBackend.operation" \
+         -i "case_study_lemma_models/intermediate/operation models/policyManagementBackend.xmi" \
     -t "$PWD/$GENERATED_ARTIFACTS"
 
 ####################################################################################################
@@ -56,7 +56,7 @@ mkdir $GENERATED_ARTIFACTS
 ####################################################################################################
 
 java -jar de.fhdo.lemma.visualizer-0.8.0-SNAPSHOT-standalone.jar \
--s="$PWD/case_study_models/customer-core/customerCore.services" \
--i="$PWD/case_study_models/intermediate/service models/customerCore.xmi" \
+-s="$PWD/case_study_lemma_models/customer-core/customerCore.services" \
+-i="$PWD/case_study_lemma_models/intermediate/service models/customerCore.xmi" \
 -t="$PWD/$GENERATED_ARTIFACTS/visualization" \
-code_generation ServicesToGraphVizGenerator -height=1000 -lvl=INTERFACES -aim="$PWD/case_study_models/intermediate/service models"  "customerManagementBackend.xmi" "customerSelfServiceBackend.xmi" "policyManagementBackend.xmi"
+code_generation ServicesToGraphVizGenerator -height=1000 -lvl=INTERFACES -aim="$PWD/case_study_lemma_models/intermediate/service models"  "customerManagementBackend.xmi" "customerSelfServiceBackend.xmi" "policyManagementBackend.xmi"
