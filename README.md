@@ -2,6 +2,14 @@
 ### Content description
 This repository contains the artifacts used during the different phases of our proposed workflow for DevOps teams for model-driven microservice development, including those we create due to the workflow. Additionally, we link the repositories of the source code we used in the workflow down below. 
 
+The folder [case_study_models](https://github.com/SeelabFhdo/SN2021/tree/master/case_study_models) contains all LEMMA models from our case study in an Eclipse project, which can be imported to the prepared Eclipse instance with our plugins. 
+
+The OpenAPI specification for the Lakeside Mutual services and the corresponding LEMMA models are included in the [generated_models_and_OpenApi](https://github.com/SeelabFhdo/SN2021/tree/master/generated_models_and_OpenApi) of this repository. 
+
+For counting the generated artefacts' lines, we provide a script, which is located in the [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder.
+
+The folder [pre_generated_artefacts](https://github.com/SeelabFhdo/SN2021/tree/master/pre_generated_artefacts) contains all the artefacts we create during our proposed workflow for simple reviewing purposes. To validate these results, we provide a step-by-step guideline below, including a [run_code_generation.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_code_generation.sh) for building those artefacts.
+
 ### Source Code
 ---
 The source code used in the Model-Driven Engineering workflow in our contribution is part of the following repositories:
@@ -15,6 +23,11 @@ The reproduction of the workflow steps described in Section 5 of the journal req
 2. Install the current ATL package from this update site: [https://download.eclipse.org/mmt/atl/updates/releases](https://download.eclipse.org/mmt/atl/updates/releases/).
 3. Extract the JAR archives in the [`dropins.zip`](https://github.com/SeelabFhdo/jss2020/blob/master/dropins.zip) file from this repository to the `dropins` folder of the Eclipse release downloaded in Step 1. The JAR archives in the ZIP file are pre-compiled plugins for LEMMA's modeling languages and the plugins mentioned in our article (see above).
 4. Restart Eclipse.
+
+Installing the necessary software on the operating system:
+1. Install docker for running the [LEMMAs container_base code generator](https://github.com/SeelabFhdo/lemma/tree/master/code%20generators/de.fhdo.lemma.model_processing.code_generation.container_base)
+2. Install the python packages libxml2, lxml, and pyyaml to use LEMMAs code generation scripts. 
+3. To execute our workflow node.js, rpm ,and Graphviz need to be installed on the system to execute the visualization stage of our workflow. 
 
 For the actual reproduction, please follow these steps:
 1. Clone this repository to your harddrive.
