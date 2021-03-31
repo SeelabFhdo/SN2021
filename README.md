@@ -1,14 +1,14 @@
-# Validation Package for our Springer Nature Article "Applying Model-Driven Engineering to Stimulate the Adoption of DevOps Processes in Small and Medium-Sized Development Organizations"
-## Content description
+## Validation Package for our Springer Nature Article "Applying Model-Driven Engineering to Stimulate the Adoption of DevOps Processes in Small and Medium-Sized Development Organizations"
+### Content description
 ---
 This repository contains the artifacts used during the different phases of our proposed workflow for DevOps teams for model-driven microservice development, including those we create due to the workflow. Additionally, we link the repositories of the source code we used in the workflow down below. 
 
-### Lakeside Mutual Case Study
+#### Lakeside Mutual Case Study
 The folder [case_study_models](https://github.com/SeelabFhdo/SN2021/tree/master/case_study_models) contains reconstructed LEMMA models from our case study in an Eclipse project, which can be imported to the prepared Eclipse instance with our plugins. 
 
 The OpenAPI specification of the services of the Lakeside Mutual case study are included in the folder [case_study_api_documentation](https://github.com/SeelabFhdo/SN2021/tree/master/case_study_api_documentation) of this repository. 
 
-### Workflow Artifacts
+#### Workflow Artifacts
 The generated LEMMA models based on the API documentation of the case study (cf. Subsection 6.2 in our manuscript) are included in the folder [pregenerated_lemma_models_from_openapi](https://github.com/SeelabFhdo/SN2021/tree/master/pregenerated_lemma_models_from_openapi) of this repository. 
 
 The folder [pregenerated_visualization_artifacts](https://github.com/SeelabFhdo/SN2021/tree/master/pregenerated_visualization_artifacts) contains the generated artefacts from the LEMMA Visualizer (cf. Subsection 6.4 in our manuscript). 
@@ -19,13 +19,13 @@ For counting the generated artefacts' Lines of Code (cf. Section 7), we provide 
 
 In order to validate the results and rerun the generation steps of the workflow, we provide a step-by-step guideline below, including a [run_code_generation.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_code_generation.sh) for building all artefacts.
 
-## Source Code
+### Source Code
 ---
 The source code used in the Model-Driven Engineering workflow in our contribution is part of the following repositories:
 - [LEMMA Repository](https://github.com/SeelabFhdo/lemma)
 - [Case Study Lakeside Mutual](https://github.com/Microservice-API-Patterns/LakesideMutual)
 
-## Reproducing the Workflow Steps
+### Reproducing the Workflow Steps
 ---
 The reproduction of the workflow steps described in Section 6 of the journal requires the preparation of a local Eclipse instance:
 1. Download Eclipse release 2020-12 (4.18.0) of the [Eclipse IDE for Java and DSL Developers](https://www.eclipse.org/downloads/packages/release/2020-12/r/eclipse-ide-java-and-dsl-developers).
@@ -49,15 +49,15 @@ For the actual reproduction, please follow these steps:
 8. Run the [run_container_base_generators.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_container_base_generators.sh) script. The script expects the absolute path of the [scripts](https://github.com/SeelabFhdo/lemma/tree/master/scripts) folder as a command line argument to run properly. 
 9. The script creates a `generated_artifacts` folder, which contains all generated artefacts. 
 
-## Retrieving the Validation Results
+### Retrieving the Validation Results
 ---
 In order to retrieve the validation results mentioned in the Section 7 of the article, review or execute the scripts from the cloned [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder. 
 
-## Additional Required Software
+### Additional Required Software
 ---
 To be able to reproduce the workflow steps as well as use the counting script, it may be necessary to install additional software on your system.
-### loc_count script
+#### loc_count script
 You need Python 3 and the [`cloc` utility](https://github.com/AlDanial/cloc) for automated LOC counting.
 
-### LEMMA Visualizer
+#### LEMMA Visualizer
 You need [GraphViz](https://graphviz.org/) which we use to generate the image representation.
