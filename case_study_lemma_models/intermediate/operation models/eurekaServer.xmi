@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
-<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/eureka-server/eurekaServer.operation">
-  <imports name="containerTechnology" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/docker.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="Eureka" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eureka.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="customerCore" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerCore.xmi" importTypeName="OPERATION_NODES"/>
-  <imports name="customerManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
-  <imports name="customerSelfServicebackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/customerSelfServiceBackend.xmi" importTypeName="OPERATION_NODES"/>
-  <imports name="policyManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/policyManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://../../eureka-server/eurekaServer.operation">
+  <imports name="containerTechnology" importUri="file://../../technology/docker.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="Eureka" importUri="file://../../technology/eureka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="customerCore" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/operation models/customerCore.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="customerManagementBackend" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/operation models/customerManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="customerSelfServicebackend" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/operation models/customerSelfServiceBackend.xmi" importTypeName="OPERATION_NODES"/>
+  <imports name="policyManagementBackend" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/operation models/policyManagementBackend.xmi" importTypeName="OPERATION_NODES"/>
   <infrastructureNodes name="ServiceDiscovery" imports="//@imports.0 //@imports.1" operationEnvironment="//@infrastructureNodes.0/@reference/@technology/@environment" qualifiedInfrastructureTechnologyName="Eureka.Eureka">
     <defaultValues value="DiscoveryService" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.0"/>
     <defaultValues value="SpringComponent" technologySpecificProperty="//@infrastructureNodes.0/@reference/@technology/@properties.2"/>
@@ -30,7 +30,7 @@
     <usedByNodes imported="true" name="CustomerCoreContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.2"/>
     <usedByNodes imported="true" name="CustomerManagementContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.3"/>
     <usedByNodes imported="true" name="CustomerSelfServiceBackendContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.4"/>
-    <usedByNodes imported="true" name="PolicyManagementContainer" qualifiedTechnologyName="container_base.Kubernetes" import="//@imports.5"/>
+    <usedByNodes imported="true" name="PolicyManagementContainer" qualifiedTechnologyName="docker.Docker" import="//@imports.5"/>
     <reference import="//@imports.1">
       <technology name="Eureka">
         <environment environmentName="openjdk:11-jdk-slim"/>

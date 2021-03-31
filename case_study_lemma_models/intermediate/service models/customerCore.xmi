@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.services">
-  <imports name="domain" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/data models/customerCore.xmi" importTypeName="DATATYPES"/>
-  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-core/customerCore.services" name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+<intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="file://../../customer-core/customerCore.services">
+  <imports name="domain" importUri="file://../data models/customerCore.xmi" importTypeName="DATATYPES"/>
+  <microservices sourceModelUri="file://../../customer-core/customerCore.services" name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
     <interfaces name="cityStaticDataHolder" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder" visibility="PUBLIC" hasImplementedOperations="true">
       <operations name="getCitiesForPostalCode" qualifiedName="com.lakesidemutual.customercore.CustomerCore.cityStaticDataHolder.getCitiesForPostalCode" visibility="PUBLIC">
         <apiOperationComment comment="Get the cities for a particular postal code.">

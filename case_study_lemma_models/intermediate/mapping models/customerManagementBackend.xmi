@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ASCII"?>
 <intermediate:IntermediateServiceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediate="http://www.fhdo.de/lemma/service/intermediate" xmlns:intermediate_1="http://www.fhdo.de/lemma/data/intermediate" sourceModelUri="">
-  <imports name="managementServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/service models/customerManagementBackend.xmi" importTypeName="MICROSERVICES"/>
-  <imports name="java" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="map" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/map.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="eureka" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/eureka.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="customerManagementBackend" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/mapping models/customerManagementBackend/customerManagementBackend_customerManagementBackend.xmi" importTypeName="DATATYPES"/>
-  <imports name="customerCoreServices" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/intermediate/customer-core/customerCore.services" importTypeName="MICROSERVICES"/>
-  <microservices sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-management-backend/customerManagementBackend.services" name="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
+  <imports name="managementServices" importUri="file://../service models/customerManagementBackend.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="java" importUri="file://../../technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="map" importUri="file://../../technology/map.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file://../../technology/eureka.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="customerManagementBackend" importUri="file:///home/jonas/dev/lemma-dev/lemma/examples/insurance-company/LEMMA models/intermediate/mapping models/customerManagementBackend/customerManagementBackend_customerManagementBackend.xmi" importTypeName="DATATYPES"/>
+  <imports name="customerCoreServices" importUri="file://../customer-core/customerCore.services" importTypeName="MICROSERVICES"/>
+  <microservices sourceModelUri="file://../../customer-management-backend/customerManagementBackend.services" name="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend" type="FUNCTIONAL" visibility="PUBLIC" effectivelyImplemented="true">
     <technologies name="java" import="//@imports.1"/>
     <technologies name="map" import="//@imports.2"/>
-    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
     <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+    <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
     <requiredMicroservices name="com.lakesidemutual.customercore.CustomerCore" qualifiedName="com.lakesidemutual.customercore.CustomerCore" imported="true" import="//@imports.5"/>
     <interfaces name="customerCoreClient" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient" visibility="PUBLIC" hasImplementedOperations="true">
-      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <operations name="getCustomers" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerCoreClient.getCustomers" visibility="PUBLIC">
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/customers</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -74,8 +74,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/customers/{ids}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -106,8 +106,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/customers/{customerId}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="PutMapping" qualifiedName="javaWithSpring.PutMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -161,16 +161,16 @@
       <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
         <addresses>/customers</addresses>
       </endpoints>
-      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <operations name="getCustomers" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerInformationHolder.getCustomers" visibility="PUBLIC">
         <apiOperationComment comment="Get all customers.">
           <parameterComments comment="search terms to filter the customers by name" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.0"/>
           <parameterComments comment="the maximum number of customers per page" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.1"/>
           <parameterComments comment="the offset of the page's first customer" parameter="//@microservices.0/@interfaces.1/@operations.0/@parameters.2"/>
         </apiOperationComment>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -229,8 +229,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/{customerId}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -276,8 +276,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/{customerId}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="PutMapping" qualifiedName="javaWithSpring.PutMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -325,8 +325,8 @@
       <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
         <addresses>/interaction-logs</addresses>
       </endpoints>
-      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <operations name="getInteractionLog" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.getInteractionLog" visibility="PUBLIC">
         <apiOperationComment comment="Get the interaction log for a customer with a given customer id.">
           <parameterComments comment="the customer's unique id" required="true" parameter="//@microservices.0/@interfaces.2/@operations.0/@parameters.0"/>
@@ -334,8 +334,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/{customerId}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -359,8 +359,8 @@
         <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
           <addresses>/{customerId}</addresses>
         </endpoints>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="PatchMapping" qualifiedName="javaWithSpring.PatchMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -402,8 +402,8 @@
         </parameters>
       </operations>
       <operations name="broadcastNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.broadcastNotifications" visibility="INTERNAL">
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.interactionLogInformationHolder.broadcastNotifications.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
           <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.4"/>
           <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.4"/>
@@ -420,12 +420,12 @@
       <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@microservices.0/@technologies.0">
         <addresses>/notifications</addresses>
       </endpoints>
-      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <operations name="getNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.notificationInformationHolder.getNotifications" visibility="PUBLIC">
         <apiOperationComment comment="Get a list of all unacknowledged notifications."/>
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="GetMapping" qualifiedName="javaWithSpring.GetMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
         </aspects>
@@ -442,11 +442,11 @@
       </aspects>
     </interfaces>
     <interfaces name="customerMessageController" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController" visibility="PUBLIC" hasImplementedOperations="true">
-      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+      <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
       <operations name="processMessage" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.processMessage" visibility="PUBLIC">
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <aspects name="MessageMapping" qualifiedName="javaWithSpring.MessageMapping" import="//@imports.1">
           <featureNames>SINGLE_VALUED</featureNames>
           <properties name="value" type="string">
@@ -475,8 +475,8 @@
         </parameters>
       </operations>
       <operations name="broadcastNotifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.broadcastNotifications" visibility="INTERNAL">
-        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <protocols communicationType="ASYNCHRONOUS" protocol="amqp" dataFormat="application/json"/>
+        <protocols communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json"/>
         <parameters name="notifications" qualifiedName="com.lakesidemutual.customerManagementBackend.CustomerManagementBackend.customerMessageController.broadcastNotifications.notifications" exchangePattern="OUT" communicationType="ASYNCHRONOUS">
           <type xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.4"/>
           <originalType xsi:type="intermediate_1:IntermediateImportedComplexType" name="NotificationDtos" origin="DATA_MODEL" kind="LIST" qualifiedName="customerManagementBackend.NotificationDtos" import="//@imports.4"/>

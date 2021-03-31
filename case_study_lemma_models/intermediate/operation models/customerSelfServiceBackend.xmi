@@ -1,34 +1,22 @@
 <?xml version="1.0" encoding="ASCII"?>
-<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/customer-self-service-backend/customerSelfServiceBackend.operation">
-  <imports name="customerSelfServiceBackend" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/service models/customerSelfServiceBackend.xmi" importTypeName="MICROSERVICES"/>
-  <imports name="container_base" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/container_base.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="protocolTechnology" importUri="file:///Users/phil/Entwicklung/SN2021/auxilaryMaterial/case_study_models/technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
-  <imports name="eureka" importUri="file:///Users/phil/Entwicklung/SN2021/ws/SN2021-CaseStudy/intermediate/operation models/eurekaServer.xmi" importTypeName="OPERATION_NODES"/>
+<intermediate:IntermediateOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:intermediate="http://www.fhdo.de/lemma/operation/intermediate" sourceModelUri="file://../../customer-self-service-backend/customerSelfServiceBackend.operation">
+  <imports name="customerSelfServiceBackend" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/service models/customerSelfServiceBackend.xmi" importTypeName="MICROSERVICES"/>
+  <imports name="container_base" importUri="file://../../technology/container_base.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="protocolTechnology" importUri="file://../../technology/javaWithSpring.technology" importTypeName="TECHNOLOGY"/>
+  <imports name="eureka" importUri="file://../../../../../../runtime-EclipseApplication/LEMMA models/intermediate/operation models/eurekaServer.xmi" importTypeName="OPERATION_NODES"/>
   <containers name="CustomerSelfServiceBackendContainer" imports="//@imports.1 //@imports.2" operationEnvironment="//@containers.0/@technologyReference/@technology/@environment" qualifiedDeploymentTechnologyName="container_base.Kubernetes">
     <deployedServices name="com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend" qualifiedName="com.lakesidemutual.customerselfservice.CustomerSelfServiceBackend" imported="true" import="//@imports.0" effectivelyImplemented="true" microserviceType="FUNCTIONAL" visibility="ARCHITECTURE"/>
-    <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@containers.0/@endpoints.0/@endpointTechnology">
-      <addresses>http://localhost:8080</addresses>
-      <endpointTechnology name="javaWithSpring" import="//@imports.2"/>
-    </endpoints>
-    <defaultValues value="CustomerSelfBackendService" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.0"/>
-    <defaultValues value="8080" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.1"/>
-    <defaultValues value="Authorization" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.12"/>
-    <defaultValues value="b318ad736c6c844b" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.14"/>
-    <defaultValues value="60" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.15"/>
-    <aspects name="Dockerfile" import="//@imports.1">
-      <featureNames>SINGLE_VALUED</featureNames>
-      <properties name="contents" type="string">
-        <featureNames>MANDATORY</featureNames>
-      </properties>
-      <propertyValues value="&#xA;&#x9;            # syntax=docker/dockerfile:experimental&#xA;&#x9;            FROM maven:3.6.1-jdk-8-alpine AS build&#xA;&#x9;            ARG BASE=/usr/src/app&#xA;&#x9;            COPY pom.xml ${BASE}/&#xA;&#x9;            COPY src ${BASE}/src&#xA;&#x9;            RUN --mount=type=cache,target=/root/.m2 mvn -f ${BASE}/pom.xml install -DskipTests&#xA;&#x9;&#xA;&#x9;            FROM openjdk:8-jdk-alpine&#xA;&#x9;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/lib/* /app/lib/&#xA;&#x9;            COPY --from=build /usr/src/app/target/dependency/META-INF /app/META-INF&#xA;&#x9;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/classes /app&#xA;&#x9;&#xA;&#x9;            EXPOSE 8080&#xA;&#x9;            ENTRYPOINT [&quot;java&quot;,&quot;-cp&quot;,&quot;app:app/lib/*&quot;,&quot;com.lakesidemutual.customerselfservice.CustomerSelfServiceApplication&quot;]&#xA;&#x9;        " property="//@containers.0/@aspects.0/@properties.0"/>
-    </aspects>
-    <aspects name="ComposePart" import="//@imports.1">
-      <featureNames>SINGLE_VALUED</featureNames>
-      <properties name="contents" type="string">
-        <featureNames>MANDATORY</featureNames>
-      </properties>
-      <propertyValues value="&#xA;&#x9;            customer-self-service-backend:&#xA;&#x9;                build: customer-self-service-backend&#xA;&#x9;                image: lakesidemutual/customer-self-service-backend&#xA;&#x9;                depends_on:&#xA;&#x9;                  - customer-core&#xA;&#x9;                  - policy-management-backend&#xA;&#x9;                environment:&#xA;&#x9;                  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE : http://eureka-server:8761/eureka&#xA;&#x9;                  SPRING_PROFILES_ACTIVE : eureka&#xA;&#x9;                  POLICYMANAGEMENT_TCPBROKERBINDADDRESS : tcp://policy-management-backend:61616&#xA;&#x9;                ports:&#xA;&#x9;                  - &quot;8080:8080&quot;&#xA;&#x9;                volumes:&#xA;&#x9;                  - &quot;maven_repo:/root/.m2&quot;&#xA;            " property="//@containers.0/@aspects.1/@properties.0"/>
-    </aspects>
+    <specifications operationMicroserviceReference="//@containers.0/@deployedServices.0">
+      <endpoints communicationType="SYNCHRONOUS" protocol="rest" dataFormat="application/json" technology="//@containers.0/@specifications.0/@endpoints.0/@endpointTechnology">
+        <addresses>http://localhost:8080</addresses>
+        <endpointTechnology name="javaWithSpring" import="//@imports.2"/>
+      </endpoints>
+      <propertyValues value="&#xA;            # syntax=docker/dockerfile:experimental&#xA;            FROM maven:3.6.1-jdk-8-alpine AS build&#xA;            ARG BASE=/usr/src/app&#xA;            COPY pom.xml ${BASE}/&#xA;            COPY src ${BASE}/src&#xA;            RUN --mount=type=cache,target=/root/.m2 mvn -f ${BASE}/pom.xml install -DskipTests&#xA;&#xA;            FROM openjdk:8-jdk-alpine&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/lib/* /app/lib/&#xA;            COPY --from=build /usr/src/app/target/dependency/META-INF /app/META-INF&#xA;            COPY --from=build /usr/src/app/target/dependency/BOOT-INF/classes /app&#xA;&#xA;            EXPOSE 8080&#xA;            ENTRYPOINT [&quot;java&quot;,&quot;-cp&quot;,&quot;app:app/lib/*&quot;,&quot;com.lakesidemutual.customerselfservice.CustomerSelfServiceApplication&quot;]&#xA;        " technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.16"/>
+      <propertyValues value="&#xA;            customer-self-service-backend:&#xA;                build: customer-self-service-backend&#xA;                image: lakesidemutual/customer-self-service-backend&#xA;                depends_on:&#xA;                  - customer-core&#xA;                  - policy-management-backend&#xA;                environment:&#xA;                  - &quot;EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka&quot;&#xA;                  - &quot;SPRING_PROFILES_ACTIVE=eureka&quot;&#xA;                  - &quot;POLICYMANAGEMENT_TCPBROKERBINDADDRESS=tcp://policy-management-backend:61616&quot;&#xA;                ports:&#xA;                  - &quot;8080:8080&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;            " technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.15"/>
+      <propertyValues value="Authorization" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.12"/>
+      <propertyValues value="b318ad736c6c844b" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.14"/>
+      <propertyValues value="60" technologySpecificProperty="//@containers.0/@technologyReference/@technology/@properties.17"/>
+    </specifications>
     <dependsOnNodes imported="true" name="ServiceDiscovery" qualifiedTechnologyName="Eureka.Eureka" import="//@imports.3"/>
     <technologyReference import="//@imports.1">
       <technology name="Kubernetes">
@@ -50,6 +38,13 @@
         </properties>
         <properties name="apiKeyValidKey" type="string"/>
         <properties name="apiKeyValue" type="string">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="ComposePart" type="string">
+          <featureNames>SINGLE_VALUED</featureNames>
+        </properties>
+        <properties name="Dockerfile" type="string">
+          <featureNames>MANDATORY</featureNames>
           <featureNames>SINGLE_VALUED</featureNames>
         </properties>
         <properties name="rateLimitPerMinute" type="int"/>
