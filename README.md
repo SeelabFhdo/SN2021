@@ -45,8 +45,8 @@ For the actual reproduction, please follow these steps:
 4. To generate the LEMMA models based on the OpenAPI specification navigate to the `LEMMA` element and select `Extract LEMMA models from OpenAPI URL`. After finishing the extraction process the models are created in the target location. Please note, that the folder has to be manually refreshed to make the created models visible. 
 5. To start the refinement stages of our proposed workflow the created service and data models can be edited by the use of LEMMAS' eclipse editor.
 6. For continuing the workflow the different models need to be transformed into their intermediate stage to be used by the [container_base generator](https://github.com/SeelabFhdo/lemma/tree/master/code%20generators/de.fhdo.lemma.model_processing.code_generation.container_base) and the system visualizer. Therefore, navigate to the `LEMMA` element again and select `Generate Intermediate Service Models` and `Generate Intermediate Operation Model` to run the model transformation.
-7. Download the official LEMMA repository to your disk to enable the use of the code generators.
-8. Run the [run_container_base_generators.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_container_base_generators.sh) script. The script expects the absolute path of the [scripts](https://github.com/SeelabFhdo/lemma/tree/master/scripts) folder as a command line argument to run properly. 
+7. Clone the official LEMMA repository to your disk to enable the use of the code generators.
+8. Run the [run_container_base_generators.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_container_base_generators.sh) script. <!--- The script expects the absolute path of the [scripts](https://github.com/SeelabFhdo/lemma/tree/master/scripts) folder as a command line argument to run properly. ---> The script excepts the absolute path of the LEMMA folder, i.e., the cloned LEMMA repository, as a command line argument to run properly. 
 9. The script creates a `generated_artifacts` folder, which contains all generated artifacts. 
 
 ### Retrieving the Validation Results

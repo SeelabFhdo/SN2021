@@ -10,7 +10,7 @@ fi
 
 SCRIPT_PATH="scripts/run_model_processor.py"
 CONTAINER_BASE_PATH="code generators/de.fhdo.lemma.model_processing.code_generation.container_base/docker/execution.yaml"
-GENERATED_ARTIFACTS="generated_model_processing_sartifacts"
+GENERATED_ARTIFACTS="generated_model_processing_artifacts"
 
 mkdir $GENERATED_ARTIFACTS
 
