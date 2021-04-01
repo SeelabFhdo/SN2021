@@ -27,6 +27,7 @@ The source code used in the Model-Driven Engineering workflow in our contributio
 
 ### Reproducing the Workflow Steps
 ---
+
 The reproduction of the workflow steps described in Section 6 of the journal requires the preparation of a local Eclipse instance:
 1. Download Eclipse release 2020-12 (4.18.0) of the [Eclipse IDE for Java and DSL Developers](https://www.eclipse.org/downloads/packages/release/2020-12/r/eclipse-ide-java-and-dsl-developers).
 2. Install the current ATL package from this update site: [https://download.eclipse.org/mmt/atl/updates/releases](https://download.eclipse.org/mmt/atl/updates/releases/).
@@ -35,8 +36,9 @@ The reproduction of the workflow steps described in Section 6 of the journal req
 
 Installing the necessary software on the operating system:
 1. Install docker for running the [LEMMAs container_base code generator](https://github.com/SeelabFhdo/lemma/tree/master/code%20generators/de.fhdo.lemma.model_processing.code_generation.container_base)
-2. Install the python packages libxml2, lxml, and pyyaml to use LEMMAs code generation scripts. 
-3. To execute our workflow node.js, rpm ,and Graphviz need to be installed on the system to execute the visualization stage of our workflow. 
+2. Install the python packages libxml2, lxml, and pyyaml to use LEMMAs code generation scripts (pip3 install ...). 
+3. To execute our workflow node.js, rpm, and [GraphViz](https://graphviz.org/) need to be installed on the system to execute the visualization stage of our workflow.
+4. To use the LoC_counting script you need Python 3 and the [`cloc` utility](https://github.com/AlDanial/cloc). 
 
 For the actual reproduction, please follow these steps:
 1. Clone this repository to your harddrive.
@@ -49,15 +51,5 @@ For the actual reproduction, please follow these steps:
 8. Run the [run_container_base_generators.sh](https://github.com/SeelabFhdo/SN2021/blob/master/run_container_base_generators.sh) script. <!--- The script expects the absolute path of the [scripts](https://github.com/SeelabFhdo/lemma/tree/master/scripts) folder as a command line argument to run properly. ---> The script excepts the absolute path of the LEMMA folder, i.e., the cloned LEMMA repository, as a command line argument to run properly. 
 9. The script creates a `generated_artifacts` folder, which contains all generated artifacts. 
 
-### Retrieving the Validation Results
----
-To retrieve the validation results mentioned in Section 7 of the article, review or execute the scripts from the cloned [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder. 
-
-### Additional Required Software
----
-To be able to reproduce the workflow steps as well as use the counting script, it may be necessary to install additional software on your system.
-#### loc_count script
-You need Python 3 and the [`cloc` utility](https://github.com/AlDanial/cloc) for automated LOC counting.
-
-#### LEMMA Visualizer
-You need [GraphViz](https://graphviz.org/) which we use to generate the image representation.
+For replicating the LoC counting follow these steps:
+1. To replicate the validation results mentioned in Section 7 of the article, review or execute the scripts from the cloned [loc_count](https://github.com/SeelabFhdo/SN2021/tree/master/loc_count) folder. 
