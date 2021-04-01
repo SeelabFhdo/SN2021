@@ -20,7 +20,7 @@
       <properties name="contents" type="string">
         <featureNames>MANDATORY</featureNames>
       </properties>
-      <propertyValues value="&#xA;            spring-boot-admin:&#xA;                build: spring-boot-admin&#xA;                image: lakesidemutual/spring-boot-admin&#xA;                depends_on:&#xA;                  - eureka-server&#xA;                environment:&#xA;                  - &quot;EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka&quot;&#xA;                  - &quot;SPRING_PROFILES_ACTIVE=eureka&quot;&#xA;                ports:&#xA;                  - &quot;9000:9000&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;        " property="//@infrastructureNodes.0/@aspects.1/@properties.0"/>
+      <propertyValues value="&#xA;            spring-boot-admin:&#xA;                build: spring-boot-admin&#xA;                image: lakesidemutual/spring-boot-admin&#xA;                depends_on:&#xA;                  - eureka-server&#xA;                environment:&#xA;                  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE : http://eureka-server:8761/eureka&#xA;                  SPRING_PROFILES_ACTIVE : eureka&#xA;                ports:&#xA;                  - &quot;9000:9000&quot;&#xA;                volumes:&#xA;                  - &quot;maven_repo:/root/.m2&quot;&#xA;        " property="//@infrastructureNodes.0/@aspects.1/@properties.0"/>
     </aspects>
     <reference import="//@imports.1">
       <technology name="SpringBootAdmin">
